@@ -1,5 +1,5 @@
 //
-//  Piece.swift
+//  Board.swift
 //  BrainGames3D
 //
 //  Created by eicke on 12/1/17.
@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import SceneKit
 
-class Piece
+
+class Board
 {
+
 
 }
