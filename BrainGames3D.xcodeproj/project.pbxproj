@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4800D1FA1E26F0A600F5F882 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4800D1F51E26F0A600F5F882 /* bg.png */; };
+		4800D1FB1E26F0A600F5F882 /* brainguy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4800D1F61E26F0A600F5F882 /* brainguy.png */; };
+		4800D1FC1E26F0A600F5F882 /* piezas1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4800D1F71E26F0A600F5F882 /* piezas1.jpg */; };
+		4800D1FD1E26F0A600F5F882 /* piezas3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4800D1F81E26F0A600F5F882 /* piezas3.jpg */; };
+		4800D1FE1E26F0A600F5F882 /* reinas.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4800D1F91E26F0A600F5F882 /* reinas.gif */; };
+		4800D2051E26F11800F5F882 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4800D2011E26F11800F5F882 /* LaunchScreen.storyboard */; };
+		4800D2061E26F11800F5F882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4800D2031E26F11800F5F882 /* Main.storyboard */; };
+		4800D2081E26F15B00F5F882 /* chesspieces.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4800D2071E26F15B00F5F882 /* chesspieces.dae */; };
+		481BDB8C1E26EFD50023B9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB811E26EFD50023B9AF /* AppDelegate.swift */; };
+		481BDB8D1E26EFD50023B9AF /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB821E26EFD50023B9AF /* GameButton.swift */; };
+		481BDB8E1E26EFD50023B9AF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB831E26EFD50023B9AF /* GameScene.sks */; };
+		481BDB8F1E26EFD50023B9AF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB841E26EFD50023B9AF /* GameScene.swift */; };
+		481BDB901E26EFD50023B9AF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB851E26EFD50023B9AF /* GameViewController.swift */; };
+		481BDB911E26EFD50023B9AF /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB861E26EFD50023B9AF /* Menu.sks */; };
+		481BDB921E26EFD50023B9AF /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB871E26EFD50023B9AF /* MyParticle.sks */; };
+		481BDB931E26EFD50023B9AF /* par.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB881E26EFD50023B9AF /* par.scnp */; };
+		481BDB941E26EFD50023B9AF /* SceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB891E26EFD50023B9AF /* SceneView.xib */; };
+		481BDB951E26EFD50023B9AF /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */; };
+		481BDB961E26EFD50023B9AF /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB8B1E26EFD50023B9AF /* smoke.png */; };
+		48C17A9E1E26EF5500517D2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48C17A9D1E26EF5500517D2C /* Assets.xcassets */; };
+		48C17AAC1E26EF5500517D2C /* BrainGames3DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C17AAB1E26EF5500517D2C /* BrainGames3DTests.swift */; };
+		48C17AB71E26EF5500517D2C /* BrainGames3DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C17AB61E26EF5500517D2C /* BrainGames3DUITests.swift */; };
+		48C17AC61E26EF6000517D2C /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C17AC51E26EF6000517D2C /* SceneKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48C17AA81E26EF5500517D2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48C17A851E26EF5500517D2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48C17A8C1E26EF5500517D2C;
+			remoteInfo = BrainGames3D;
+		};
+		48C17AB31E26EF5500517D2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48C17A851E26EF5500517D2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48C17A8C1E26EF5500517D2C;
+			remoteInfo = BrainGames3D;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4800D1F51E26F0A600F5F882 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = ../../../Downloads/bg.png; sourceTree = "<group>"; };
+		4800D1F61E26F0A600F5F882 /* brainguy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brainguy.png; path = ../../../Downloads/brainguy.png; sourceTree = "<group>"; };
+		4800D1F71E26F0A600F5F882 /* piezas1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = piezas1.jpg; path = ../../../Downloads/piezas1.jpg; sourceTree = "<group>"; };
+		4800D1F81E26F0A600F5F882 /* piezas3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = piezas3.jpg; path = ../../../Downloads/piezas3.jpg; sourceTree = "<group>"; };
+		4800D1F91E26F0A600F5F882 /* reinas.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = reinas.gif; path = ../../../Downloads/reinas.gif; sourceTree = "<group>"; };
+		4800D2021E26F11800F5F882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../BrainGame copia/BrainGame/Base.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		4800D2041E26F11800F5F882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../BrainGame copia/BrainGame/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		4800D2071E26F15B00F5F882 /* chesspieces.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; name = chesspieces.dae; path = ../../../Downloads/chesspieces.dae; sourceTree = "<group>"; };
+		481BDB801E26EFD50023B9AF /* BrainGames3D-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrainGames3D-Bridging-Header.h"; sourceTree = "<group>"; };
+		481BDB811E26EFD50023B9AF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../BrainGame copia/BrainGame/AppDelegate.swift"; sourceTree = "<group>"; };
+		481BDB821E26EFD50023B9AF /* GameButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameButton.swift; path = "../../BrainGame copia/BrainGame/GameButton.swift"; sourceTree = "<group>"; };
+		481BDB831E26EFD50023B9AF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = "../../BrainGame copia/BrainGame/GameScene.sks"; sourceTree = "<group>"; };
+		481BDB841E26EFD50023B9AF /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "../../BrainGame copia/BrainGame/GameScene.swift"; sourceTree = "<group>"; };
+		481BDB851E26EFD50023B9AF /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = "../../BrainGame copia/BrainGame/GameViewController.swift"; sourceTree = "<group>"; };
+		481BDB861E26EFD50023B9AF /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Menu.sks; path = "../../BrainGame copia/BrainGame/Menu.sks"; sourceTree = "<group>"; };
+		481BDB871E26EFD50023B9AF /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MyParticle.sks; path = "../../BrainGame copia/BrainGame/MyParticle.sks"; sourceTree = "<group>"; };
+		481BDB881E26EFD50023B9AF /* par.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; name = par.scnp; path = "../../BrainGame copia/BrainGame/par.scnp"; sourceTree = "<group>"; };
+		481BDB891E26EFD50023B9AF /* SceneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SceneView.xib; path = "../../BrainGame copia/BrainGame/SceneView.xib"; sourceTree = "<group>"; };
+		481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneViewController.swift; path = "../../BrainGame copia/BrainGame/SceneViewController.swift"; sourceTree = "<group>"; };
+		481BDB8B1E26EFD50023B9AF /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smoke.png; path = "../../BrainGame copia/BrainGame/smoke.png"; sourceTree = "<group>"; };
+		48C17A8D1E26EF5500517D2C /* BrainGames3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainGames3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48C17A9D1E26EF5500517D2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48C17AA21E26EF5500517D2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48C17AA71E26EF5500517D2C /* BrainGames3DTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainGames3DTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48C17AAB1E26EF5500517D2C /* BrainGames3DTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainGames3DTests.swift; sourceTree = "<group>"; };
+		48C17AAD1E26EF5500517D2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48C17AB21E26EF5500517D2C /* BrainGames3DUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainGames3DUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48C17AB61E26EF5500517D2C /* BrainGames3DUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainGames3DUITests.swift; sourceTree = "<group>"; };
+		48C17AB81E26EF5500517D2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48C17AC51E26EF6000517D2C /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48C17A8A1E26EF5500517D2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48C17AC61E26EF6000517D2C /* SceneKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48C17AA41E26EF5500517D2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48C17AAF1E26EF5500517D2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48C17A841E26EF5500517D2C = {
+			isa = PBXGroup;
+			children = (
+				48C17A8F1E26EF5500517D2C /* BrainGames3D */,
+				48C17AAA1E26EF5500517D2C /* BrainGames3DTests */,
+				48C17AB51E26EF5500517D2C /* BrainGames3DUITests */,
+				48C17A8E1E26EF5500517D2C /* Products */,
+				48C17AC41E26EF6000517D2C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		48C17A8E1E26EF5500517D2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48C17A8D1E26EF5500517D2C /* BrainGames3D.app */,
+				48C17AA71E26EF5500517D2C /* BrainGames3DTests.xctest */,
+				48C17AB21E26EF5500517D2C /* BrainGames3DUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48C17A8F1E26EF5500517D2C /* BrainGames3D */ = {
+			isa = PBXGroup;
+			children = (
+				4800D2071E26F15B00F5F882 /* chesspieces.dae */,
+				4800D2011E26F11800F5F882 /* LaunchScreen.storyboard */,
+				4800D2031E26F11800F5F882 /* Main.storyboard */,
+				4800D1F51E26F0A600F5F882 /* bg.png */,
+				4800D1F61E26F0A600F5F882 /* brainguy.png */,
+				4800D1F71E26F0A600F5F882 /* piezas1.jpg */,
+				4800D1F81E26F0A600F5F882 /* piezas3.jpg */,
+				4800D1F91E26F0A600F5F882 /* reinas.gif */,
+				481BDB811E26EFD50023B9AF /* AppDelegate.swift */,
+				481BDB821E26EFD50023B9AF /* GameButton.swift */,
+				481BDB831E26EFD50023B9AF /* GameScene.sks */,
+				481BDB841E26EFD50023B9AF /* GameScene.swift */,
+				481BDB851E26EFD50023B9AF /* GameViewController.swift */,
+				481BDB861E26EFD50023B9AF /* Menu.sks */,
+				481BDB871E26EFD50023B9AF /* MyParticle.sks */,
+				481BDB881E26EFD50023B9AF /* par.scnp */,
+				481BDB891E26EFD50023B9AF /* SceneView.xib */,
+				481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */,
+				481BDB8B1E26EFD50023B9AF /* smoke.png */,
+				48C17A9D1E26EF5500517D2C /* Assets.xcassets */,
+				48C17AA21E26EF5500517D2C /* Info.plist */,
+				481BDB801E26EFD50023B9AF /* BrainGames3D-Bridging-Header.h */,
+			);
+			path = BrainGames3D;
+			sourceTree = "<group>";
+		};
+		48C17AAA1E26EF5500517D2C /* BrainGames3DTests */ = {
+			isa = PBXGroup;
+			children = (
+				48C17AAB1E26EF5500517D2C /* BrainGames3DTests.swift */,
+				48C17AAD1E26EF5500517D2C /* Info.plist */,
+			);
+			path = BrainGames3DTests;
+			sourceTree = "<group>";
+		};
+		48C17AB51E26EF5500517D2C /* BrainGames3DUITests */ = {
+			isa = PBXGroup;
+			children = (
+				48C17AB61E26EF5500517D2C /* BrainGames3DUITests.swift */,
+				48C17AB81E26EF5500517D2C /* Info.plist */,
+			);
+			path = BrainGames3DUITests;
+			sourceTree = "<group>";
+		};
+		48C17AC41E26EF6000517D2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48C17AC51E26EF6000517D2C /* SceneKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48C17A8C1E26EF5500517D2C /* BrainGames3D */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48C17ABB1E26EF5500517D2C /* Build configuration list for PBXNativeTarget "BrainGames3D" */;
+			buildPhases = (
+				48C17A891E26EF5500517D2C /* Sources */,
+				48C17A8A1E26EF5500517D2C /* Frameworks */,
+				48C17A8B1E26EF5500517D2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrainGames3D;
+			productName = BrainGames3D;
+			productReference = 48C17A8D1E26EF5500517D2C /* BrainGames3D.app */;
+			productType = "com.apple.product-type.application";
+		};
+		48C17AA61E26EF5500517D2C /* BrainGames3DTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48C17ABE1E26EF5500517D2C /* Build configuration list for PBXNativeTarget "BrainGames3DTests" */;
+			buildPhases = (
+				48C17AA31E26EF5500517D2C /* Sources */,
+				48C17AA41E26EF5500517D2C /* Frameworks */,
+				48C17AA51E26EF5500517D2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48C17AA91E26EF5500517D2C /* PBXTargetDependency */,
+			);
+			name = BrainGames3DTests;
+			productName = BrainGames3DTests;
+			productReference = 48C17AA71E26EF5500517D2C /* BrainGames3DTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		48C17AB11E26EF5500517D2C /* BrainGames3DUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48C17AC11E26EF5500517D2C /* Build configuration list for PBXNativeTarget "BrainGames3DUITests" */;
+			buildPhases = (
+				48C17AAE1E26EF5500517D2C /* Sources */,
+				48C17AAF1E26EF5500517D2C /* Frameworks */,
+				48C17AB01E26EF5500517D2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48C17AB41E26EF5500517D2C /* PBXTargetDependency */,
+			);
+			name = BrainGames3DUITests;
+			productName = BrainGames3DUITests;
+			productReference = 48C17AB21E26EF5500517D2C /* BrainGames3DUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48C17A851E26EF5500517D2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = eicke;
+				TargetAttributes = {
+					48C17A8C1E26EF5500517D2C = {
+						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
+					48C17AA61E26EF5500517D2C = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 48C17A8C1E26EF5500517D2C;
+					};
+					48C17AB11E26EF5500517D2C = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 48C17A8C1E26EF5500517D2C;
+					};
+				};
+			};
+			buildConfigurationList = 48C17A881E26EF5500517D2C /* Build configuration list for PBXProject "BrainGames3D" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48C17A841E26EF5500517D2C;
+			productRefGroup = 48C17A8E1E26EF5500517D2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48C17A8C1E26EF5500517D2C /* BrainGames3D */,
+				48C17AA61E26EF5500517D2C /* BrainGames3DTests */,
+				48C17AB11E26EF5500517D2C /* BrainGames3DUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48C17A8B1E26EF5500517D2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4800D1FE1E26F0A600F5F882 /* reinas.gif in Resources */,
+				481BDB911E26EFD50023B9AF /* Menu.sks in Resources */,
+				4800D1FC1E26F0A600F5F882 /* piezas1.jpg in Resources */,
+				481BDB941E26EFD50023B9AF /* SceneView.xib in Resources */,
+				4800D1FD1E26F0A600F5F882 /* piezas3.jpg in Resources */,
+				4800D1FB1E26F0A600F5F882 /* brainguy.png in Resources */,
+				4800D1FA1E26F0A600F5F882 /* bg.png in Resources */,
+				4800D2061E26F11800F5F882 /* Main.storyboard in Resources */,
+				4800D2081E26F15B00F5F882 /* chesspieces.dae in Resources */,
+				4800D2051E26F11800F5F882 /* LaunchScreen.storyboard in Resources */,
+				481BDB961E26EFD50023B9AF /* smoke.png in Resources */,
+				481BDB8E1E26EFD50023B9AF /* GameScene.sks in Resources */,
+				48C17A9E1E26EF5500517D2C /* Assets.xcassets in Resources */,
+				481BDB921E26EFD50023B9AF /* MyParticle.sks in Resources */,
+				481BDB931E26EFD50023B9AF /* par.scnp in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48C17AA51E26EF5500517D2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48C17AB01E26EF5500517D2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48C17A891E26EF5500517D2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				481BDB951E26EFD50023B9AF /* SceneViewController.swift in Sources */,
+				481BDB901E26EFD50023B9AF /* GameViewController.swift in Sources */,
+				481BDB8F1E26EFD50023B9AF /* GameScene.swift in Sources */,
+				481BDB8C1E26EFD50023B9AF /* AppDelegate.swift in Sources */,
+				481BDB8D1E26EFD50023B9AF /* GameButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48C17AA31E26EF5500517D2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48C17AAC1E26EF5500517D2C /* BrainGames3DTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48C17AAE1E26EF5500517D2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48C17AB71E26EF5500517D2C /* BrainGames3DUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		48C17AA91E26EF5500517D2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48C17A8C1E26EF5500517D2C /* BrainGames3D */;
+			targetProxy = 48C17AA81E26EF5500517D2C /* PBXContainerItemProxy */;
+		};
+		48C17AB41E26EF5500517D2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48C17A8C1E26EF5500517D2C /* BrainGames3D */;
+			targetProxy = 48C17AB31E26EF5500517D2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4800D2011E26F11800F5F882 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4800D2021E26F11800F5F882 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4800D2031E26F11800F5F882 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4800D2041E26F11800F5F882 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48C17AB91E26EF5500517D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48C17ABA1E26EF5500517D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48C17ABC1E26EF5500517D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = BrainGames3D/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = master.BrainGames3D;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BrainGames3D/BrainGames3D-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		48C17ABD1E26EF5500517D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = BrainGames3D/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = master.BrainGames3D;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BrainGames3D/BrainGames3D-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		48C17ABF1E26EF5500517D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BrainGames3DTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = master.BrainGames3DTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainGames3D.app/BrainGames3D";
+			};
+			name = Debug;
+		};
+		48C17AC01E26EF5500517D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BrainGames3DTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = master.BrainGames3DTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainGames3D.app/BrainGames3D";
+			};
+			name = Release;
+		};
+		48C17AC21E26EF5500517D2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = BrainGames3DUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = master.BrainGames3DUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BrainGames3D;
+			};
+			name = Debug;
+		};
+		48C17AC31E26EF5500517D2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = BrainGames3DUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = master.BrainGames3DUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BrainGames3D;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48C17A881E26EF5500517D2C /* Build configuration list for PBXProject "BrainGames3D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48C17AB91E26EF5500517D2C /* Debug */,
+				48C17ABA1E26EF5500517D2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48C17ABB1E26EF5500517D2C /* Build configuration list for PBXNativeTarget "BrainGames3D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48C17ABC1E26EF5500517D2C /* Debug */,
+				48C17ABD1E26EF5500517D2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48C17ABE1E26EF5500517D2C /* Build configuration list for PBXNativeTarget "BrainGames3DTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48C17ABF1E26EF5500517D2C /* Debug */,
+				48C17AC01E26EF5500517D2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48C17AC11E26EF5500517D2C /* Build configuration list for PBXNativeTarget "BrainGames3DUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48C17AC21E26EF5500517D2C /* Debug */,
+				48C17AC31E26EF5500517D2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48C17A851E26EF5500517D2C /* Project object */;
+}
