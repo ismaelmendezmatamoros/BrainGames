@@ -17,15 +17,11 @@
 		4800D2081E26F15B00F5F882 /* chesspieces.dae in Resources */ = {isa = PBXBuildFile; fileRef = 4800D2071E26F15B00F5F882 /* chesspieces.dae */; };
 		481BDB8C1E26EFD50023B9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB811E26EFD50023B9AF /* AppDelegate.swift */; };
 		481BDB8D1E26EFD50023B9AF /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB821E26EFD50023B9AF /* GameButton.swift */; };
-		481BDB8E1E26EFD50023B9AF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB831E26EFD50023B9AF /* GameScene.sks */; };
 		481BDB8F1E26EFD50023B9AF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB841E26EFD50023B9AF /* GameScene.swift */; };
 		481BDB901E26EFD50023B9AF /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB851E26EFD50023B9AF /* GameViewController.swift */; };
-		481BDB911E26EFD50023B9AF /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB861E26EFD50023B9AF /* Menu.sks */; };
-		481BDB921E26EFD50023B9AF /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB871E26EFD50023B9AF /* MyParticle.sks */; };
-		481BDB931E26EFD50023B9AF /* par.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB881E26EFD50023B9AF /* par.scnp */; };
 		481BDB941E26EFD50023B9AF /* SceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB891E26EFD50023B9AF /* SceneView.xib */; };
 		481BDB951E26EFD50023B9AF /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */; };
-		481BDB961E26EFD50023B9AF /* smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB8B1E26EFD50023B9AF /* smoke.png */; };
+		48BFC0E51E27CE53004DD566 /* piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BFC0E41E27CE53004DD566 /* piece.swift */; };
 		48C17A9E1E26EF5500517D2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48C17A9D1E26EF5500517D2C /* Assets.xcassets */; };
 		48C17AAC1E26EF5500517D2C /* BrainGames3DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C17AAB1E26EF5500517D2C /* BrainGames3DTests.swift */; };
 		48C17AB71E26EF5500517D2C /* BrainGames3DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C17AB61E26EF5500517D2C /* BrainGames3DUITests.swift */; };
@@ -61,15 +57,11 @@
 		481BDB801E26EFD50023B9AF /* BrainGames3D-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrainGames3D-Bridging-Header.h"; sourceTree = "<group>"; };
 		481BDB811E26EFD50023B9AF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../BrainGame copia/BrainGame/AppDelegate.swift"; sourceTree = "<group>"; };
 		481BDB821E26EFD50023B9AF /* GameButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameButton.swift; path = "../../BrainGame copia/BrainGame/GameButton.swift"; sourceTree = "<group>"; };
-		481BDB831E26EFD50023B9AF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = "../../BrainGame copia/BrainGame/GameScene.sks"; sourceTree = "<group>"; };
 		481BDB841E26EFD50023B9AF /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = "../../BrainGame copia/BrainGame/GameScene.swift"; sourceTree = "<group>"; };
 		481BDB851E26EFD50023B9AF /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = "../../BrainGame copia/BrainGame/GameViewController.swift"; sourceTree = "<group>"; };
-		481BDB861E26EFD50023B9AF /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Menu.sks; path = "../../BrainGame copia/BrainGame/Menu.sks"; sourceTree = "<group>"; };
-		481BDB871E26EFD50023B9AF /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MyParticle.sks; path = "../../BrainGame copia/BrainGame/MyParticle.sks"; sourceTree = "<group>"; };
-		481BDB881E26EFD50023B9AF /* par.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; name = par.scnp; path = "../../BrainGame copia/BrainGame/par.scnp"; sourceTree = "<group>"; };
 		481BDB891E26EFD50023B9AF /* SceneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SceneView.xib; path = "../../BrainGame copia/BrainGame/SceneView.xib"; sourceTree = "<group>"; };
 		481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneViewController.swift; path = "../../BrainGame copia/BrainGame/SceneViewController.swift"; sourceTree = "<group>"; };
-		481BDB8B1E26EFD50023B9AF /* smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smoke.png; path = "../../BrainGame copia/BrainGame/smoke.png"; sourceTree = "<group>"; };
+		48BFC0E41E27CE53004DD566 /* piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piece.swift; sourceTree = "<group>"; };
 		48C17A8D1E26EF5500517D2C /* BrainGames3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainGames3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48C17A9D1E26EF5500517D2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48C17AA21E26EF5500517D2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +100,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48BFC0E71E27CFCA004DD566 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				48F0B25C1E27D0D400F59405 /* 3DModels */,
+				48F0B25B1E27D0A300F59405 /* Res */,
+				481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */,
+				48BFC0E41E27CE53004DD566 /* piece.swift */,
+			);
+			name = Games;
+			sourceTree = "<group>";
+		};
+		48BFC0E91E27D01B004DD566 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				481BDB821E26EFD50023B9AF /* GameButton.swift */,
+				481BDB841E26EFD50023B9AF /* GameScene.swift */,
+				481BDB851E26EFD50023B9AF /* GameViewController.swift */,
+				48F0B2591E27D05700F59405 /* Res */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		48C17A841E26EF5500517D2C = {
 			isa = PBXGroup;
 			children = (
@@ -132,25 +146,12 @@
 		48C17A8F1E26EF5500517D2C /* BrainGames3D */ = {
 			isa = PBXGroup;
 			children = (
-				4800D2071E26F15B00F5F882 /* chesspieces.dae */,
+				48BFC0E91E27D01B004DD566 /* Menu */,
+				48BFC0E71E27CFCA004DD566 /* Games */,
 				4800D2011E26F11800F5F882 /* LaunchScreen.storyboard */,
 				4800D2031E26F11800F5F882 /* Main.storyboard */,
-				4800D1F51E26F0A600F5F882 /* bg.png */,
-				4800D1F61E26F0A600F5F882 /* brainguy.png */,
-				4800D1F71E26F0A600F5F882 /* piezas1.jpg */,
-				4800D1F81E26F0A600F5F882 /* piezas3.jpg */,
-				4800D1F91E26F0A600F5F882 /* reinas.gif */,
 				481BDB811E26EFD50023B9AF /* AppDelegate.swift */,
-				481BDB821E26EFD50023B9AF /* GameButton.swift */,
-				481BDB831E26EFD50023B9AF /* GameScene.sks */,
-				481BDB841E26EFD50023B9AF /* GameScene.swift */,
-				481BDB851E26EFD50023B9AF /* GameViewController.swift */,
-				481BDB861E26EFD50023B9AF /* Menu.sks */,
-				481BDB871E26EFD50023B9AF /* MyParticle.sks */,
-				481BDB881E26EFD50023B9AF /* par.scnp */,
 				481BDB891E26EFD50023B9AF /* SceneView.xib */,
-				481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */,
-				481BDB8B1E26EFD50023B9AF /* smoke.png */,
 				48C17A9D1E26EF5500517D2C /* Assets.xcassets */,
 				48C17AA21E26EF5500517D2C /* Info.plist */,
 				481BDB801E26EFD50023B9AF /* BrainGames3D-Bridging-Header.h */,
@@ -182,6 +183,41 @@
 				48C17AC51E26EF6000517D2C /* SceneKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		48F0B2591E27D05700F59405 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				48F0B25A1E27D06200F59405 /* images */,
+			);
+			name = Res;
+			sourceTree = "<group>";
+		};
+		48F0B25A1E27D06200F59405 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				4800D1F51E26F0A600F5F882 /* bg.png */,
+				4800D1F61E26F0A600F5F882 /* brainguy.png */,
+				4800D1F71E26F0A600F5F882 /* piezas1.jpg */,
+				4800D1F81E26F0A600F5F882 /* piezas3.jpg */,
+				4800D1F91E26F0A600F5F882 /* reinas.gif */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		48F0B25B1E27D0A300F59405 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Res;
+			sourceTree = "<group>";
+		};
+		48F0B25C1E27D0D400F59405 /* 3DModels */ = {
+			isa = PBXGroup;
+			children = (
+				4800D2071E26F15B00F5F882 /* chesspieces.dae */,
+			);
+			name = 3DModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,7 +329,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4800D1FE1E26F0A600F5F882 /* reinas.gif in Resources */,
-				481BDB911E26EFD50023B9AF /* Menu.sks in Resources */,
 				4800D1FC1E26F0A600F5F882 /* piezas1.jpg in Resources */,
 				481BDB941E26EFD50023B9AF /* SceneView.xib in Resources */,
 				4800D1FD1E26F0A600F5F882 /* piezas3.jpg in Resources */,
@@ -302,11 +337,7 @@
 				4800D2061E26F11800F5F882 /* Main.storyboard in Resources */,
 				4800D2081E26F15B00F5F882 /* chesspieces.dae in Resources */,
 				4800D2051E26F11800F5F882 /* LaunchScreen.storyboard in Resources */,
-				481BDB961E26EFD50023B9AF /* smoke.png in Resources */,
-				481BDB8E1E26EFD50023B9AF /* GameScene.sks in Resources */,
 				48C17A9E1E26EF5500517D2C /* Assets.xcassets in Resources */,
-				481BDB921E26EFD50023B9AF /* MyParticle.sks in Resources */,
-				481BDB931E26EFD50023B9AF /* par.scnp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +367,7 @@
 				481BDB8F1E26EFD50023B9AF /* GameScene.swift in Sources */,
 				481BDB8C1E26EFD50023B9AF /* AppDelegate.swift in Sources */,
 				481BDB8D1E26EFD50023B9AF /* GameButton.swift in Sources */,
+				48BFC0E51E27CE53004DD566 /* piece.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
