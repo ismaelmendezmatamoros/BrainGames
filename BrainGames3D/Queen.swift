@@ -1,5 +1,5 @@
 //
-//  Piece.swift
+//  Queen.swift
 //  BrainGames3D
 //
 //  Created by eicke on 12/1/17.
@@ -9,9 +9,14 @@
 import Foundation
 import SceneKit
 
-protocol Piece
+class Queen: SCNNode, Piece
 {
-    var team:Int        {get set}
-    //var node:SCNNode    {get set}
+    var team:Int = 0
+    
     func possiblesMovements(board:Board) -> [(Int,Int)]
+    {
+        
+        return []
+    }
+
 }

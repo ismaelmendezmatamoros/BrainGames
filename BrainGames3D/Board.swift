@@ -11,7 +11,7 @@ import SceneKit
 
 
 
-class Board
+class Board: SCNNode
 {
     struct Square  {
         var node:SCNNode? = nil
@@ -19,35 +19,39 @@ class Board
         var type:Int = 0                                 //Puede que en futuro haya q distinguir entre tipos de casillas
     }
     var board:[[Square?]] = []
-    var node:SCNNode
+    //var node:SCNNode
     
-    init(map:[[Int]], geometry:SCNGeometry)
+    init(map:[[Int]], squaresize:Float, squareheight:Float, color1:UIColor, color2:UIColor)
     {
-        node = SCNNode()
-        let size_x = geometry.boundingBox.max.x - geometry.boundingBox.min.x
-        let size_z = geometry.boundingBox.max.z - geometry.boundingBox.min.z
+        super.init()
+        //node = SCNNode()
         for i in 0...map.count - 1
         {
             board.append([])
             for j in 0...map[i].count - 1
             {
+                if(map[i][j] == 0)
+                {
+                    continue
+                }
                 var square = Square()
-                var nodegeom = SCNNode(geometry: geometry)
+                let nodegeom = SCNNode(geometry: SCNBox(width: CGFloat(squaresize), height: CGFloat(squareheight), length: CGFloat(squaresize), chamferRadius: 0.0))
                 square.node = SCNNode()
                 square.node?.position.y = 0.0
-                square.node?.position.x = Float(j) * size_x
-                square.node?.position.z = Float(i) * size_z
+                square.node?.position.x = Float(j) * squaresize
+                square.node?.position.z = Float(i) * squaresize
                 nodegeom.name = "(" + String(i) + "," + String(j) + ")"
                 print(nodegeom.name! + String(((i + j) % 2 == 0)))
-                nodegeom.geometry?.firstMaterial?.diffuse.contents = ( ((i + j) % 2 == 0) ? UIColor.blue : UIColor.green)
+                nodegeom.geometry?.firstMaterial?.diffuse.contents = ( ((i + j) % 2 == 0) ? color1 : color2)
                 square.node?.addChildNode(nodegeom)
                 board[i].append(square)
-                self.node.addChildNode(square.node!)
+                self.addChildNode(square.node!)
             }            
-        //self.node.geometry?.firstMaterial?.diffuse.contents =  UIColor.brown
         }
+    }
     
-        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

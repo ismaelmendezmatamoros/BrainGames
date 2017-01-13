@@ -27,6 +27,8 @@
 		48C17AC61E26EF6000517D2C /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C17AC51E26EF6000517D2C /* SceneKit.framework */; };
 		48F0B25E1E27D26400F59405 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0B25D1E27D26400F59405 /* Board.swift */; };
 		48F0B2601E27D2BA00F59405 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0B25F1E27D2BA00F59405 /* Piece.swift */; };
+		48F0B2631E2800A500F59405 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0B2621E2800A500F59405 /* Queen.swift */; };
+		48F0B2651E280FA900F59405 /* nQueensGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F0B2641E280FA900F59405 /* nQueensGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		48C17AC51E26EF6000517D2C /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		48F0B25D1E27D26400F59405 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		48F0B25F1E27D2BA00F59405 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		48F0B2621E2800A500F59405 /* Queen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		48F0B2641E280FA900F59405 /* nQueensGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = nQueensGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,11 +109,13 @@
 		48BFC0E71E27CFCA004DD566 /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				48F0B2611E28007300F59405 /* nQueens */,
 				48F0B25C1E27D0D400F59405 /* 3DModels */,
 				48F0B25B1E27D0A300F59405 /* Res */,
 				481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */,
 				48F0B25D1E27D26400F59405 /* Board.swift */,
 				48F0B25F1E27D2BA00F59405 /* Piece.swift */,
+				48F0B2621E2800A500F59405 /* Queen.swift */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -221,6 +227,14 @@
 				4800D2071E26F15B00F5F882 /* chesspieces.dae */,
 			);
 			name = 3DModels;
+			sourceTree = "<group>";
+		};
+		48F0B2611E28007300F59405 /* nQueens */ = {
+			isa = PBXGroup;
+			children = (
+				48F0B2641E280FA900F59405 /* nQueensGame.swift */,
+			);
+			name = nQueens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,8 +383,10 @@
 				48F0B2601E27D2BA00F59405 /* Piece.swift in Sources */,
 				481BDB901E26EFD50023B9AF /* GameViewController.swift in Sources */,
 				481BDB8F1E26EFD50023B9AF /* GameScene.swift in Sources */,
+				48F0B2631E2800A500F59405 /* Queen.swift in Sources */,
 				481BDB8C1E26EFD50023B9AF /* AppDelegate.swift in Sources */,
 				48F0B25E1E27D26400F59405 /* Board.swift in Sources */,
+				48F0B2651E280FA900F59405 /* nQueensGame.swift in Sources */,
 				481BDB8D1E26EFD50023B9AF /* GameButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
