@@ -14,8 +14,7 @@ class Queen: SCNNode, Piece
     var team:Int = 0
     
     func possiblesMovements(board:Board) -> [(Int,Int)]
-    {
-        
+    {        
         return []
     }
 

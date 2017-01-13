@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-protocol Piece
+protocol Piece 
 {
     var team:Int        {get set}
     //var node:SCNNode    {get set}

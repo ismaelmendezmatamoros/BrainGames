@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../BrainGame copia/BrainGame/SceneViewController.swift"
-            timestampString = "506025326.920248"
+            timestampString = "506025977.44163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../BrainGame copia/BrainGame/SceneViewController.swift"
-            timestampString = "506025326.920248"
+            timestampString = "506028051.304032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "doRound()"
             landmarkType = "7">
          </BreakpointContent>
@@ -72,28 +72,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../BrainGame copia/BrainGame/SceneViewController.swift"
-            timestampString = "506025326.920248"
+            timestampString = "506025977.44163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "loadModelsFromFile(filename:names:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrainGames3D/nQueensGame.swift"
-            timestampString = "506023183.601266"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "setupGame()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -136,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../BrainGame copia/BrainGame/SceneViewController.swift"
-            timestampString = "506025326.920248"
+            timestampString = "506025977.44163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "loadModelsFromFile(filename:names:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -152,12 +136,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../BrainGame copia/BrainGame/SceneViewController.swift"
-            timestampString = "506025326.920248"
+            timestampString = "506025977.44163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "loadModelsFromFile(filename:names:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainGames3D/nQueensGame.swift"
+            timestampString = "506027696.582075"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "handleTouchOnTurn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
