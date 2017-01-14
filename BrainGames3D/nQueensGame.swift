@@ -14,7 +14,7 @@ class nQueensGame: BoardGameViewController
     var impossibleSquares:[Piece:[(x:Int, y:Int)]] = [:]
     var numQueens = 0
     let piece_name = "Queen"
-    var board:Board?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.numplayers = 1
@@ -73,31 +73,20 @@ class nQueensGame: BoardGameViewController
     override func beforeTurnStarts(player: Int) -> Bool {
         
         var squares:[(x:Int, y:Int)] = []
-        let other_pieces = self.board?.pieces_on_board.values
+        let other_pieces = self.board?.pieces_on_board.values.reversed()
         for i in self.impossibleSquares.values
         {
             for pos in i {
-                let compare_lambda =
+                if  (self.squareArrayContains(array: squares, element: pos) == false && self.squareArrayContains(array: other_pieces!, element: pos) == false)//squares.contains(where: compare_lambda) == false && other_pieces?.contains(where: compare_lambda) == false{
                 {
-                    (a:(x:Int, y:Int)) in
-                    return pos.x == a.x && pos.y == a.y
+                    squares.append(pos)
                 }
-                if squares.contains(where: compare_lambda) == false && other_pieces?.contains(where: compare_lambda) == false{
-                    squares.append(pos)//self.highLightModel(model: (self.board?.board[pos.x][pos.y]?.node)! , color: UIColor.blue, duration: 1.0)
-                }
-                else
-                {
-                    print("repeeeeee")
-                }
+
             }
         }
-        let lambda = {
-            (iter:Int) in
-            let pos = squares[iter]
-            self.highLightModel(model: (self.board?.board[pos.x][pos.y]?.node)! , color: UIColor.blue, duration: 1.0)
-        }
-        DispatchQueue.concurrentPerform(iterations: squares.count, execute: lambda)
+        self.highLightSquares(squares: squares, color: UIColor.blue, duration: 2.0)
         return super.beforeTurnStarts(player: player)
+        
     }
  
     override func handleTouchOnTurn(_ gestureRecognize: UIGestureRecognizer)
