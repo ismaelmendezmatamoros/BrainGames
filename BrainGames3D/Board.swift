@@ -74,6 +74,13 @@ class Board: SCNNode
         }
         return nil
     }
+    /*
+    func createBorder() -> SCNNode
+    {
+        //let limits = self.board_node.boundingBox
+        
+    
+    }*/
     
     func placePiece(piece:Piece, position:(x:Int, y:Int))
     {

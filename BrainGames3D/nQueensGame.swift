@@ -71,14 +71,32 @@ class nQueensGame: BoardGameViewController
     }
 
     override func beforeTurnStarts(player: Int) -> Bool {
+        
+        var squares:[(x:Int, y:Int)] = []
+        let other_pieces = self.board?.pieces_on_board.values
         for i in self.impossibleSquares.values
         {
             for pos in i {
-            self.highLightModel(model: (self.board?.board[pos.x][pos.y]?.node)! , color: UIColor.blue, duration: 1.0)
-        
+                let compare_lambda =
+                {
+                    (a:(x:Int, y:Int)) in
+                    return pos.x == a.x && pos.y == a.y
+                }
+                if squares.contains(where: compare_lambda) == false && other_pieces?.contains(where: compare_lambda) == false{
+                    squares.append(pos)//self.highLightModel(model: (self.board?.board[pos.x][pos.y]?.node)! , color: UIColor.blue, duration: 1.0)
+                }
+                else
+                {
+                    print("repeeeeee")
+                }
             }
         }
-     
+        let lambda = {
+            (iter:Int) in
+            let pos = squares[iter]
+            self.highLightModel(model: (self.board?.board[pos.x][pos.y]?.node)! , color: UIColor.blue, duration: 1.0)
+        }
+        DispatchQueue.concurrentPerform(iterations: squares.count, execute: lambda)
         return super.beforeTurnStarts(player: player)
     }
  
