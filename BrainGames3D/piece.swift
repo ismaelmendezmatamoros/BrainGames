@@ -22,6 +22,11 @@ class Piece: NSObject
         let lambda =
             { (a:SCNNode, b:UnsafeMutablePointer<ObjCBool>) in
                 a.castsShadow = true
+                a.castsShadow = true
+                a.geometry?.firstMaterial?.isLitPerPixel = true
+                a.geometry?.firstMaterial?.specular.contents = UIColor.red
+                 
+                
         }
         self.node.enumerateChildNodes(lambda)
     }

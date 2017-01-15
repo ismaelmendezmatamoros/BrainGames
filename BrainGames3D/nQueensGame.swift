@@ -38,23 +38,26 @@ class nQueensGame: BoardGameViewController
         self.pieces[piece_name] = Queen(piece: pieces[piece_name]!)
         //let lightNode = SCNNode()
         lightNode.light = SCNLight()
-        lightNode.light!.type = .spot
+
         
-        lightNode.light?.type = SCNLight.LightType.omni
-        lightNode.light?.spotInnerAngle = 45;
+        lightNode.light?.type = .omni
+        /*lightNode.light?.spotInnerAngle = 45;
         lightNode.light?.spotOuterAngle = 45;
         lightNode.light?.shadowRadius = 100.0;
-        lightNode.light?.zFar = 10000;
+        lightNode.light?.zFar = 10000;*/
         lightNode.light?.castsShadow = true
         lightNode.position.x = (self.board?.boundingBox.max.x)! / 2
         lightNode.position.z = (self.board?.boundingBox.max.z)! / 2
-        lightNode.position.y = size * 5
+        lightNode.position.y = size * 1
+        lightNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 10, y: 0, z: 3.5, duration: 2)))
         self.scene.rootNode.castsShadow = true
         //self.board?.addChildNode(lightNode)
-        lightNode.addChildNode(self.board!)
+        //lightNode.addChildNode(self.board!)
         let constraint = SCNLookAtConstraint(target: self.board)
-        lightNode.constraints = [constraint]
-        self.scene.rootNode.addChildNode(lightNode)
+        //lightNode.constraints = [constraint]
+        //self.scene.rootNode.addChildNode(lightNode)
+        
+        
 
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
@@ -70,18 +73,11 @@ class nQueensGame: BoardGameViewController
         cameraNode.camera = SCNCamera()
         //scene.rootNode.addChildNode(cameraNode)
         
-        // place the camera
-        cameraNode.position = SCNVector3(x: 0.10 , y: 20, z: 25)
-        self.exitButton.geometry = SCNPlane(width: CGFloat(1) , height: CGFloat(1))
-        self.exitButton.orientation.x = Float(SCNBillboardAxis.X.rawValue)
-        self.exitButton.orientation.y = Float(SCNBillboardAxis.Y.rawValue)
-        self.exitButton.orientation.z = Float(SCNBillboardAxis.Z.rawValue)
-        self.exitButton.geometry?.firstMaterial?.diffuse.contents = UIImage.init(named: "brainguy.png")
-        cameraNode.addChildNode(self.exitButton)
         
         //self.scene.rootNode.runAction(SCNAction.rotateBy(x: 0.40, y: 0.0, z: 0, duration: 1))
         //cameraNode.addChildNode(self.board!)
         self.scene.rootNode.addChildNode(board!)
+        self.board?.addChildNode(lightNode)
         self.board?.position.y = (pieces[piece_name]?.node.boundingBox.min.y)! - (board?.boundingBox.max.y)!
         super.setupScene()
     }
