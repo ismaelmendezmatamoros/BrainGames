@@ -1,3 +1,4 @@
+
 //
 //  nQueensGame.swift
 //  BrainGames3D
@@ -12,8 +13,10 @@ import SceneKit
 class nQueensGame: BoardGameViewController
 {
     var impossibleSquares:[Piece:[(x:Int, y:Int)]] = [:]
+    var imposibleSquaresArray:[(x:Int, y:Int)] = []
     var numQueens = 0
     let piece_name = "Queen"
+    var lightNode:SCNNode = SCNNode()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +32,30 @@ class nQueensGame: BoardGameViewController
     {
         let map = Array.init(repeating: Array.init(repeating: 1, count: self.numQueens), count: self.numQueens)
         self.pieces = self.loadModelsFromFile(filename: "chesspieces.dae", names: [piece_name])
-        let size = (self.pieces[piece_name]?.node.boundingBox.max.x)! - (self.pieces[piece_name]?.node.boundingBox.min.x)! //+ (self.pieces[piece_name]?.node.boundingBox.min.x)! * 0.01
+        let size = (self.pieces[piece_name]?.node.boundingBox.max.x)! - (self.pieces[piece_name]?.node.boundingBox.min.x)!
         self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.darkGray, color2: UIColor.black, piece_height: (pieces[piece_name]?.node.boundingBox.max.y)!)
         //////////
         self.pieces[piece_name] = Queen(piece: pieces[piece_name]!)
-        let lightNode = SCNNode()
+        //let lightNode = SCNNode()
         lightNode.light = SCNLight()
-        lightNode.light!.type = .omni
-        lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
-        scene.rootNode.addChildNode(lightNode)        
+        lightNode.light!.type = .spot
         
+        lightNode.light?.type = SCNLight.LightType.omni
+        lightNode.light?.spotInnerAngle = 45;
+        lightNode.light?.spotOuterAngle = 45;
+        lightNode.light?.shadowRadius = 100.0;
+        lightNode.light?.zFar = 10000;
+        lightNode.light?.castsShadow = true
+        lightNode.position.x = (self.board?.boundingBox.max.x)! / 2
+        lightNode.position.z = (self.board?.boundingBox.max.z)! / 2
+        lightNode.position.y = size * 5
+        self.scene.rootNode.castsShadow = true
+        //self.board?.addChildNode(lightNode)
+        lightNode.addChildNode(self.board!)
+        let constraint = SCNLookAtConstraint(target: self.board)
+        lightNode.constraints = [constraint]
+        self.scene.rootNode.addChildNode(lightNode)
+
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
@@ -46,16 +63,36 @@ class nQueensGame: BoardGameViewController
         ambientLightNode.light!.color = UIColor.darkGray
         scene.rootNode.addChildNode(ambientLightNode)
         //////////
+        
+        //let floor = SCNNode(geometry: SCNPlane(width: CGFloat(size * 50) , height: CGFloat(size * 50)))
+        //self.board?.addChildNode(floor)
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        //scene.rootNode.addChildNode(cameraNode)
+        
+        // place the camera
+        cameraNode.position = SCNVector3(x: 0.10 , y: 20, z: 25)
+        self.exitButton.geometry = SCNPlane(width: CGFloat(1) , height: CGFloat(1))
+        self.exitButton.orientation.x = Float(SCNBillboardAxis.X.rawValue)
+        self.exitButton.orientation.y = Float(SCNBillboardAxis.Y.rawValue)
+        self.exitButton.orientation.z = Float(SCNBillboardAxis.Z.rawValue)
+        self.exitButton.geometry?.firstMaterial?.diffuse.contents = UIImage.init(named: "brainguy.png")
+        cameraNode.addChildNode(self.exitButton)
+        
+        //self.scene.rootNode.runAction(SCNAction.rotateBy(x: 0.40, y: 0.0, z: 0, duration: 1))
+        //cameraNode.addChildNode(self.board!)
         self.scene.rootNode.addChildNode(board!)
         self.board?.position.y = (pieces[piece_name]?.node.boundingBox.min.y)! - (board?.boundingBox.max.y)!
+        super.setupScene()
     }
-    
     
     
     
     func placePiece(piece:Piece, position:(x:Int, y:Int))
     {
+        //piece.node.name = piece_name + String(self.turns)
         self.board?.placePiece(piece: piece, position: position)
+        piece.node.runAction(SCNAction.fadeIn(duration: 1))
         let possibles = piece.possiblesMovements(board: board!, position: position)
         self.impossibleSquares[piece] = possibles
     }
@@ -69,38 +106,98 @@ class nQueensGame: BoardGameViewController
         }
         super.turnsEnd(player: player)
     }
-
-    override func beforeTurnStarts(player: Int) -> Bool {
-        
+    
+    func loadImposibleSquaresArray()
+    {
         var squares:[(x:Int, y:Int)] = []
         let other_pieces = self.board?.pieces_on_board.values.reversed()
         for i in self.impossibleSquares.values
         {
             for pos in i {
-                if  (self.squareArrayContains(array: squares, element: pos) == false && self.squareArrayContains(array: other_pieces!, element: pos) == false)//squares.contains(where: compare_lambda) == false && other_pieces?.contains(where: compare_lambda) == false{
+                if  (self.squareArrayContains(array: squares, element: pos) == false && self.squareArrayContains(array: other_pieces!, element: pos) == false)
                 {
                     squares.append(pos)
                 }
-
+                
             }
         }
-        self.highLightSquares(squares: squares, color: UIColor.blue, duration: 2.0)
+        self.imposibleSquaresArray = squares
+    }
+
+    override func beforeTurnStarts(player: Int) -> Bool
+    {
+        self.loadImposibleSquaresArray()
+        self.highLightSquares(squares: self.imposibleSquaresArray, color: UIColor.blue, duration: 1.0)
         return super.beforeTurnStarts(player: player)
         
     }
  
+    override func victoryConditionCheck() -> Bool {
+        if (self.board?.pieces_on_board.count == self.numQueens)
+        {
+            _ = super.victoryConditionCheck()
+            return true
+        }
+        return false
+    }
+    
+    func removePiece(piece:Piece)
+    {
+        let step2 = {
+            piece.node.removeFromParentNode()
+            
+            // self.finalizeTurn()
+        }
+        _ = self.board?.pieces_on_board.removeValue(forKey: piece)
+        _ = self.impossibleSquares.removeValue(forKey: piece)
+        self.loadImposibleSquaresArray()
+        piece.node.runAction(SCNAction.fadeOut(duration: 1), completionHandler: step2)
+    }
+    
     override func handleTouchOnTurn(_ gestureRecognize: UIGestureRecognizer)
     {
         let touched = self.getTouchedElements(gestureRecognize)
         if touched.count > 0
         {
+            
+            for i in (self.board?.pieces_on_board.keys)!
+            {
+                print (i.node.name! + " " + (touched.first?.node.name)!)
+                if ((i.node.childNode(withName:(touched.first?.node.name)!, recursively: true)) != nil) ///
+                {
+                    self.removePiece(piece: i)      
+                    return
+                }
+                
+            }
             let position = self.board?.getSquarePosition(node: (touched.first?.node)!)
             print(String(describing: position))
             if(position == nil)
             {
+                //self.finalizeTurn()
                 return
             }
-            self.placePiece(piece: Queen.init(piece: pieces[piece_name]!), position: position!)
+            if (self.squareArrayContains(array: self.imposibleSquaresArray, element: position!))
+            {
+                let movement = CGFloat(self.board!.size) * CGFloat(0.1)
+                let vibrate_action = SCNAction.repeat(SCNAction.sequence([SCNAction.moveBy(x: 0, y: movement, z: 0, duration: 0.1),SCNAction.moveBy(x: 0, y: -movement, z: 0, duration: 0.1)]), count: 3)
+                for i in (self.board?.pieces_on_board.keys)!
+                {
+                    if (self.squareArrayContains(array: self.impossibleSquares[i]!, element: position!)) ///
+                    {
+                        i.node.runAction(vibrate_action)
+                    }
+                    
+                }
+                self.highLightSquares(squares: self.imposibleSquaresArray, color: UIColor.blue, duration: 1.0)
+                
+                //self.finalizeTurn()
+                return
+            }
+            let queen = Queen.init(piece: pieces[piece_name]!)
+            queen.setName(name: piece_name + String(self.turns))
+            self.placePiece(piece: queen, position: position!)
+            print(String( describing: self.scene.rootNode.camera?.technique?.dictionaryRepresentation))
             self.finalizeTurn()
         }
     }

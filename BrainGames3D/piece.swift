@@ -14,15 +14,39 @@ class Piece: NSObject
     var node: SCNNode = SCNNode()
     var team:Int = 0
     
+    
+    
     override init()
     {
-    
+        self.node.castsShadow = true
+        let lambda =
+            { (a:SCNNode, b:UnsafeMutablePointer<ObjCBool>) in
+                a.castsShadow = true
+        }
+        self.node.enumerateChildNodes(lambda)
     }
+    
+    func setName(name:String)
+    {
+        let lambda =
+            { (a:SCNNode, b:UnsafeMutablePointer<ObjCBool>) in
+                a.name = a.name! + "-" + name
+        }
+        self.node.enumerateChildNodes(lambda)
+    }
+    
     
     init(piece:Piece)
     {
         self.node = piece.node.clone()
         self.team = piece.team
+        self.node.castsShadow = true
+        let lambda =
+            { (a:SCNNode, b:UnsafeMutablePointer<ObjCBool>) in
+                a.castsShadow = true
+        }
+        self.node.enumerateChildNodes(lambda)
+        
     }
     /*
     var hashValue: Int {

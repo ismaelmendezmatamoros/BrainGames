@@ -21,11 +21,13 @@ class Board: SCNNode
     var board:[[Square?]] = []
     var pieces_on_board:[Piece:(x:Int, y:Int)] = [:]
     var board_node = SCNNode()
-    
+    var size:Float = 0
     
     init(map:[[Int]], squaresize:Float, squareheight:Float, color1:UIColor, color2:UIColor, piece_height:Float)
     {
         super.init()
+        self.size = squaresize
+        self.castsShadow = true
         for i in 0...map.count - 1
         {
             board.append([])
@@ -38,6 +40,7 @@ class Board: SCNNode
                 var square = Square()
                 let nodegeom = SCNNode(geometry: SCNBox(width: CGFloat(squaresize), height: CGFloat(squareheight), length: CGFloat(squaresize), chamferRadius: 0.0))
                 square.node = SCNNode()
+                square.node?.castsShadow = true
                 square.node?.position.y = 0.0
                 square.node?.position.x = Float(j) * squaresize
                 square.node?.position.z = Float(i) * squaresize
