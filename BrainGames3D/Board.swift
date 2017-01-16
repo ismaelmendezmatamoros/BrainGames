@@ -57,9 +57,13 @@ class Board: SCNNode
                 //self.s_node.position.y += squaresize
             }            
         }
-        self.board_node.position.y -= piece_height + squareheight + squareheight * 0.01
+        //self.board_node.position.y -= abs(self.boundingBox.max.y) + abs(self.boundingBox.min.y) //* 0.01
+        //self.pieces_node.position.y += squareheight
+   
+        self.board_node.addChildNode(pieces_node)
+        self.position = (self.board[map.count/2][map.count/2]?.node?.position)!
         self.addChildNode(self.board_node)
-        self.addChildNode(self.pieces_node)
+        //self.addChildNode(self.pieces_node)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -92,6 +96,7 @@ class Board: SCNNode
     {
         let np = piece//Piece.init(piece: piece)
         self.pieces_on_board[np] = position
+        np.node.position.y += abs(np.node.boundingBox.min.z)
         np.node.position.x = (self.board[position.x][position.y]?.node?.position.x)!
         np.node.position.z = (self.board[position.x][position.y]?.node?.position.z)!
         self.pieces_node.addChildNode(np.node)

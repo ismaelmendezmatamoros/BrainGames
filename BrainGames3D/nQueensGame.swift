@@ -15,7 +15,7 @@ class nQueensGame: BoardGameViewController
     var impossibleSquares:[Piece:[(x:Int, y:Int)]] = [:]
     var imposibleSquaresArray:[(x:Int, y:Int)] = []
     var numQueens = 0
-    let piece_name = "Queen"
+    let piece_name = "Bishop"
     var lightNode:SCNNode = SCNNode()
 
     override func viewDidLoad() {
@@ -30,8 +30,9 @@ class nQueensGame: BoardGameViewController
 
     override func setupScene()
     {
+        self.scene.background.contents = UIColor.black
         let map = Array.init(repeating: Array.init(repeating: 1, count: self.numQueens), count: self.numQueens)
-        self.pieces = self.loadModelsFromFile(filename: "chesspieces.dae", names: [piece_name])
+        self.pieces = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [piece_name], color:UIColor.red)
         let size = (self.pieces[piece_name]?.node.boundingBox.max.x)! - (self.pieces[piece_name]?.node.boundingBox.min.x)!
         self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.darkGray, color2: UIColor.black, piece_height: (pieces[piece_name]?.node.boundingBox.max.y)!)
         //////////
@@ -41,20 +42,21 @@ class nQueensGame: BoardGameViewController
 
         
         lightNode.light?.type = .omni
-        /*lightNode.light?.spotInnerAngle = 45;
-        lightNode.light?.spotOuterAngle = 45;
+        lightNode.light?.spotInnerAngle = 75;
+        lightNode.light?.spotOuterAngle = 75;
         lightNode.light?.shadowRadius = 100.0;
-        lightNode.light?.zFar = 10000;*/
+        lightNode.light?.intensity = 1500
+        lightNode.light?.zFar = 10000;
         lightNode.light?.castsShadow = true
         lightNode.position.x = (self.board?.boundingBox.max.x)! / 2
-        lightNode.position.z = (self.board?.boundingBox.max.z)! / 2
-        lightNode.position.y = size * 1
-        lightNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 10, y: 0, z: 3.5, duration: 2)))
+        lightNode.position.z = (self.board?.boundingBox.max.z)! * 1 // 2
+        lightNode.position.y = size * 2.5
+        //lightNode.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 10, y: 0, z: 3.5, duration: 2)))
         self.scene.rootNode.castsShadow = true
         //self.board?.addChildNode(lightNode)
         //lightNode.addChildNode(self.board!)
         let constraint = SCNLookAtConstraint(target: self.board)
-        //lightNode.constraints = [constraint]
+        lightNode.constraints = [constraint]
         //self.scene.rootNode.addChildNode(lightNode)
         
         
@@ -159,7 +161,7 @@ class nQueensGame: BoardGameViewController
             for i in (self.board?.pieces_on_board.keys)!
             {
                 print (i.node.name! + " " + (touched.first?.node.name)!)
-                if ((i.node.childNode(withName:(touched.first?.node.name)!, recursively: true)) != nil) ///
+                if (i.node.name == touched.first?.node.name || (i.node.childNode(withName:(touched.first?.node.name)!, recursively: true)) != nil) ///
                 {
                     self.removePiece(piece: i)      
                     return
@@ -191,6 +193,9 @@ class nQueensGame: BoardGameViewController
                 return
             }
             let queen = Queen.init(piece: pieces[piece_name]!)
+            queen.node.rotation.x = -114
+            //queen.node.rotation.y = 22.3
+            //queen.node.runAction(SCNAction.rotateTo(x: -1.5, y: 0, z: 0, duration: 0))
             queen.setName(name: piece_name + String(self.turns))
             self.placePiece(piece: queen, position: position!)
             print(String( describing: self.scene.rootNode.camera?.technique?.dictionaryRepresentation))

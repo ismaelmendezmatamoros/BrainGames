@@ -24,7 +24,7 @@ class Piece: NSObject
                 a.castsShadow = true
                 a.castsShadow = true
                 a.geometry?.firstMaterial?.isLitPerPixel = true
-                a.geometry?.firstMaterial?.specular.contents = UIColor.red
+                a.geometry?.firstMaterial?.specular.contents = UIColor.black
                  
                 
         }
@@ -38,6 +38,7 @@ class Piece: NSObject
                 a.name = a.name! + "-" + name
         }
         self.node.enumerateChildNodes(lambda)
+        self.node.name = name
     }
     
     
