@@ -8,7 +8,7 @@
 
 import Foundation
 import SceneKit
-
+import SpriteKit
 
 
 class Board: SCNNode
@@ -91,6 +91,16 @@ class Board: SCNNode
         
     
     }*/
+    
+    func setLabelonSquare(position:(x:Int, y:Int), text:String, text_color:UIColor, bg_color:UIColor)
+    {
+        let scene = SKScene()
+        let texture = SKLabelNode.init(text: text)
+        texture.color = bg_color
+        texture.fontColor = text_color
+        scene.addChild(texture)
+        self.board[position.x][position.y]?.node?.geometry?.firstMaterial?.diffuse.contents = scene
+    }
     
     func placePiece(piece:Piece, position:(x:Int, y:Int))
     {
