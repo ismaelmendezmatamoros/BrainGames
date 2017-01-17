@@ -92,14 +92,25 @@ class Board: SCNNode
     
     }*/
     
-    func setLabelonSquare(position:(x:Int, y:Int), text:String, text_color:UIColor, bg_color:UIColor)
+    func setLabelonSquare(position:(x:Int, y:Int), text:String, text_color:UIColor)
     {
-        let scene = SKScene()
-        let texture = SKLabelNode.init(text: text)
-        texture.color = bg_color
-        texture.fontColor = text_color
-        scene.addChild(texture)
-        self.board[position.x][position.y]?.node?.geometry?.firstMaterial?.diffuse.contents = scene
+        let movement = size * 0.05
+        let tex = SCNText.init(string: text, extrusionDepth: 2.0)
+        tex.firstMaterial?.diffuse.contents = text_color
+        let text_node = SCNNode(geometry: tex)
+        let action = [SCNAction.moveBy(x: 0, y: CGFloat(movement), z: 0, duration: 0.5),SCNAction.moveBy(x: 0, y: -(CGFloat)(movement), z: 0, duration: 0.5)]
+        text_node.runAction(SCNAction.repeatForever(SCNAction.sequence(action)))
+        text_node.name = self.board[position.x][position.y]?.node?.name
+        let tx = text_node.boundingBox.max.x - text_node.boundingBox.min.x
+        let tz = text_node.boundingBox.max.y - text_node.boundingBox.min.y
+        text_node.eulerAngles.x = Float(0.5 * 3.14)
+        text_node.position.y = size * 0.1
+        text_node.position.z = -tz - (self.size  * 0.5) //* 0.5
+        text_node.position.x = -tx - (self.size  * 0.25)// - tx
+        let scale =  0.5 * ((self.board[position.x][position.y]?.node?.boundingBox.max.x)! - (self.board[position.x][position.y]?.node?.boundingBox.min.x)!) /  (text_node.boundingBox.max.x - text_node.boundingBox.min.x)
+        text_node.scale = SCNVector3.init(x: scale, y: scale, z: scale)
+        self.board[position.x][position.y]?.node?.addChildNode(text_node) //addClid(tex)
+        //self.board[position.x][position.y]?.node?.geometry?.firstMaterial?.diffuse.contents = scene
     }
     
     func placePiece(piece:Piece, position:(x:Int, y:Int))

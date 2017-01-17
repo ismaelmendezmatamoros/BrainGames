@@ -19,7 +19,7 @@ class KnightsGame: BoardGameViewController
     let team_names = ["white", "red"]
     var initial_positions:[String:[(x:Int, y:Int)]] = [:]
     
-    let team_colors = [UIColor.darkGray/*UIColor.init(red: 250/255, green: 203/255, blue: 122/255, alpha: 1)*/, UIColor.init(red: 81/255, green: 32/255, blue: 65/255, alpha: 1)]
+    let team_colors = [UIColor.init(red: 250/255, green: 203/255, blue: 122/255, alpha: 1), UIColor.init(red: 81/255, green: 32/255, blue: 65/255, alpha: 1)]
     var lightNode:SCNNode = SCNNode()
     var numBishops = 0
     var board_x = 0
@@ -59,7 +59,7 @@ class KnightsGame: BoardGameViewController
         self.pieces = self.generateTeamsPieces(modelsfilename: "Piecescollada-3.dae", teams: self.team_names, piecenames: [self.piece_name], color: self.team_colors)
         
         let size = (self.pieces.values.first?.node.boundingBox.max.x)! - (self.pieces.values.first?.node.boundingBox.min.x)!
-        self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: self.team_colors[0], color2: self.team_colors[1], piece_height: (self.pieces.values.first?.node.boundingBox.max.y)!)
+        self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.brown /*self.team_colors[0]*/, color2: /*self.team_colors[1]*/ UIColor.darkGray, piece_height: (self.pieces.values.first?.node.boundingBox.max.y)!)
         //////////
         //self.pieces[piece_name] = Queen(piece: pieces[piece_name]!)
         //let lightNode = SCNNode()
@@ -120,19 +120,17 @@ class KnightsGame: BoardGameViewController
                 let knight = Knight(piece: self.pieces[team_names[n] + "-" + self.piece_name]! )
                 knight.setName(name: knight.node.name! + String(i))
                 knight.team = n
-                
                 let position = positions[n][i]
+                knight.node.eulerAngles.y = Float(0.5 * 3.14 * [-1.0, 1.0][n])
                 self.placePiece(piece: knight, position: position)
                 self.initial_positions[team_names[n]]?.append(position)
                 self.initial_positions[self.team_names[n]]?.append(position)
+                self.board?.setLabelonSquare(position: position, text: "x", text_color: self.team_colors.reversed()[n])
             }
         }
         Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
         
-        for i in self.team_names
-        {
-            self.board.
-        }
+
         
         //////////////////
     }

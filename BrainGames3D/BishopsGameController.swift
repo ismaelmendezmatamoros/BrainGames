@@ -97,10 +97,12 @@ class BishopsGame: BoardGameViewController
                 let bishop = Bishop(piece: self.pieces[team_names[n] + "-" + self.piece_name]! )
                 bishop.setName(name: bishop.node.name! + String(i))
                 bishop.team = n
+                bishop.node.eulerAngles.y = Float(0.5 * 3.14 * [1.0, -1.0][n])
                 let position = (x: i , y: n * (self.board_x - 1))
                 self.placePiece(piece: bishop, position: position)
                 self.initial_positions[team_names[n]]?.append(position)
                 self.initial_positions[self.team_names[n]]?.append(position)
+                self.board?.setLabelonSquare(position: position, text: "x", text_color: self.team_colors.reversed()[n])
             }
         }
         Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
