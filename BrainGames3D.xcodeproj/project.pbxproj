@@ -21,6 +21,7 @@
 		481BDB941E26EFD50023B9AF /* SceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 481BDB891E26EFD50023B9AF /* SceneView.xib */; };
 		481BDB951E26EFD50023B9AF /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */; };
 		485774F51E2D60B2003A6D79 /* BishopsGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485774F41E2D60B2003A6D79 /* BishopsGameController.swift */; };
+		485774F71E2D6CFC003A6D79 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485774F61E2D6CFC003A6D79 /* Bishop.swift */; };
 		48C17A9E1E26EF5500517D2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48C17A9D1E26EF5500517D2C /* Assets.xcassets */; };
 		48C17AAC1E26EF5500517D2C /* BrainGames3DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C17AAB1E26EF5500517D2C /* BrainGames3DTests.swift */; };
 		48C17AB71E26EF5500517D2C /* BrainGames3DUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C17AB61E26EF5500517D2C /* BrainGames3DUITests.swift */; };
@@ -66,6 +67,7 @@
 		481BDB891E26EFD50023B9AF /* SceneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SceneView.xib; path = "../../BrainGame copia/BrainGame/SceneView.xib"; sourceTree = "<group>"; };
 		481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneViewController.swift; path = "../../BrainGame copia/BrainGame/SceneViewController.swift"; sourceTree = "<group>"; };
 		485774F41E2D60B2003A6D79 /* BishopsGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BishopsGameController.swift; sourceTree = "<group>"; };
+		485774F61E2D6CFC003A6D79 /* Bishop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		48C17A8D1E26EF5500517D2C /* BrainGames3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainGames3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48C17A9D1E26EF5500517D2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48C17AA21E26EF5500517D2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		48F0B25B1E27D0A300F59405 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				485774F61E2D6CFC003A6D79 /* Bishop.swift */,
 			);
 			name = Res;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				481BDB951E26EFD50023B9AF /* SceneViewController.swift in Sources */,
 				48F0B2601E27D2BA00F59405 /* Piece.swift in Sources */,
 				481BDB901E26EFD50023B9AF /* GameViewController.swift in Sources */,
+				485774F71E2D6CFC003A6D79 /* Bishop.swift in Sources */,
 				481BDB8F1E26EFD50023B9AF /* GameScene.swift in Sources */,
 				48F0B2631E2800A500F59405 /* Queen.swift in Sources */,
 				481BDB8C1E26EFD50023B9AF /* AppDelegate.swift in Sources */,

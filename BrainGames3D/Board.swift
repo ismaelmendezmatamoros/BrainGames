@@ -41,7 +41,7 @@ class Board: SCNNode
                 let nodegeom = SCNNode(geometry: SCNBox(width: CGFloat(squaresize), height: CGFloat(squareheight), length: CGFloat(squaresize), chamferRadius: 0.0))
                 
                 square.node = SCNNode()
-                square.node?.castsShadow = true
+                square.node?.castsShadow = false
                 square.node?.geometry?.firstMaterial?.isLitPerPixel = true
                 square.node?.geometry?.firstMaterial?.specular.contents = UIColor.red
                 square.node?.position.y = 0.0

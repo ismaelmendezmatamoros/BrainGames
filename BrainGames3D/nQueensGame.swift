@@ -15,7 +15,7 @@ class nQueensGame: BoardGameViewController
     var impossibleSquares:[Piece:[(x:Int, y:Int)]] = [:]
     var imposibleSquaresArray:[(x:Int, y:Int)] = []
     var numQueens = 0
-    let piece_name = "Bishop"
+    let piece_name = "Queen"
     var lightNode:SCNNode = SCNNode()
 
     override func viewDidLoad() {

@@ -13,16 +13,16 @@ class Piece: NSObject
 {
     var node: SCNNode = SCNNode()
     var team:Int = 0
-    
+    static var default_y_position:Float = 0.0
     
     
     override init()
     {
-        self.node.castsShadow = true
+        self.node.castsShadow = false
         let lambda =
             { (a:SCNNode, b:UnsafeMutablePointer<ObjCBool>) in
-                a.castsShadow = true
-                a.castsShadow = true
+                a.castsShadow = false
+
                 a.geometry?.firstMaterial?.isLitPerPixel = true
                 a.geometry?.firstMaterial?.specular.contents = UIColor.black
                  
@@ -46,10 +46,10 @@ class Piece: NSObject
     {
         self.node = piece.node.clone()
         self.team = piece.team
-        self.node.castsShadow = true
+        self.node.castsShadow = false
         let lambda =
             { (a:SCNNode, b:UnsafeMutablePointer<ObjCBool>) in
-                a.castsShadow = true
+                a.castsShadow = false
         }
         self.node.enumerateChildNodes(lambda)
         
