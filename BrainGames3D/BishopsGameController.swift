@@ -1,21 +1,16 @@
-//
-//  BishopsGameController.swift
-//  BrainGames3D
-//
-//  Created by eicke on 16/1/17.
-//  Copyright © 2017 eicke. All rights reserved.
-//
 
 import Foundation
 import SceneKit
 
 class BishopsGame: BoardGameViewController
 {
-
+    
     var impossibleSquares:[Piece:[(x:Int, y:Int)]] = [:]
     var imposibleSquaresArray:[(x:Int, y:Int)] = []
     let piece_name = "Bishop"
     let team_names = ["white", "red"]
+    var initial_positions:[String:[(x:Int, y:Int)]] = [:]
+    
     let team_colors = [UIColor.white, UIColor.red]
     var lightNode:SCNNode = SCNNode()
     var numBishops = 0
@@ -35,7 +30,7 @@ class BishopsGame: BoardGameViewController
         self.numBishops = 4
         self.board_x = 5
         super.setupGame()
-
+        
     }
     
     override func setupScene()
@@ -43,9 +38,9 @@ class BishopsGame: BoardGameViewController
         self.scene.background.contents = UIColor.black
         
         let map = Array.init(repeating: Array.init(repeating: 1, count: self.board_x), count: self.numBishops)
-       // let whites = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [piece_name], color:UIColor.red)
+        // let whites = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [piece_name], color:UIColor.red)
         self.pieces = self.generateTeamsPieces(modelsfilename: "Piecescollada-3.dae", teams: self.team_names, piecenames: [self.piece_name], color: self.team_colors)
-       
+        
         let size = (self.pieces.values.first?.node.boundingBox.max.x)! - (self.pieces.values.first?.node.boundingBox.min.x)!
         self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.darkGray, color2: UIColor.black, piece_height: (self.pieces.values.first?.node.boundingBox.max.y)!)
         //////////
@@ -97,41 +92,64 @@ class BishopsGame: BoardGameViewController
         
         //////////////////
         for n in 0...self.team_names.count - 1 {
-            
+            self.initial_positions[self.team_names[n]] = []
             for i in 0...self.numBishops - 1 {
                 let bishop = Bishop(piece: self.pieces[team_names[n] + "-" + self.piece_name]! )
                 bishop.setName(name: bishop.node.name! + String(i))
                 bishop.team = n
-                self.placePiece(piece: bishop, position: (x: i , y: n * (self.board_x - 1)))
+                let position = (x: i , y: n * (self.board_x - 1))
+                self.placePiece(piece: bishop, position: position)
+                self.initial_positions[team_names[n]]?.append(position)
+                self.initial_positions[self.team_names[n]]?.append(position)
             }
         }
         Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
         //////////////////
-        
-
     }
+    
+     override func victoryConditionCheck() -> Bool {
+     var name = self.team_names.first
+     let lambda = {
+     (a:Piece) -> Bool in
+     return self.team_names[a.team] == name
+     }
+     let team1 = self.board?.pieces_on_board.keys.filter(lambda).reversed()
+     name = self.team_names[1]
+     let team2 = self.board?.pieces_on_board.keys.filter(lambda).reversed()
+     
+        //////team1
+     let cond2 = team1?.filter({ (a:Piece) -> Bool in
+     return  self.squareArrayContains(array: self.initial_positions[self.team_names[1]]!, element: (self.board?.pieces_on_board[a])!) == false
+     }).isEmpty
+        ///////team2
+     let cond1 = team2?.filter({ (a:Piece) -> Bool in
+     return  self.squareArrayContains(array: self.initial_positions[self.team_names[0]]!, element: (self.board?.pieces_on_board[a])!) == false
+     }).isEmpty
+     
+     return cond1! && cond2!
+     }
     
     override func turnsEnd(player: Int) {
         self.impossibleSquares.removeAll()
         for i in (self.board?.pieces_on_board.keys)!
         {
             self.impossibleSquares[i] = i.possiblesMovements(board: self.board!, position: (self.board?.pieces_on_board[i])!)
-            super.turnsEnd(player: player)
         }
+        super.turnsEnd(player: player)
     }
     
     func getPossiblesFor(piece:Piece) -> [(x:Int, y:Int)]
     {
         let rivals = self.board?.pieces_on_board.keys.filter({ (a:Piece) -> Bool in
-        return a.team != piece.team
-    })
+            return a.team != piece.team
+        })
         var rivals_possibles:[(x:Int, y:Int)] = []
         var final_possible:[(x:Int, y:Int)] = []
         for i in rivals!
         {
             for n in self.impossibleSquares[i]!
             {
-            rivals_possibles.append(n)
+                rivals_possibles.append(n)
             }
             
         }
@@ -165,25 +183,26 @@ class BishopsGame: BoardGameViewController
     func movePiece(piece:Piece, position:(x:Int, y:Int))
     {
         var square_position = self.board?.board[(position.x)][(position.y)]?.node?.position
-        square_position?.y = (piece.node.position.y)
         piece.node.removeAllActions()
         piece.node.position.y = Piece.default_y_position
+        square_position?.y = (piece.node.position.y)
+        let control = semaphore_t.init(0)
+        self.board?.pieces_on_board[piece] = position
         piece.node.runAction((SCNAction.move(to: square_position!, duration: 1.0)), completionHandler: {
-            self.board?.pieces_on_board[piece] = position
-
+            
+            semaphore_signal(control)
+            
         })
+        semaphore_wait(control)
         
     }
     
     override func handleTouchOnTurn(_ gestureRecognize: UIGestureRecognizer)
     {
         let movement = CGFloat(self.board!.size) * CGFloat(0.1)
-        
-        
         let touched = self.getTouchedElements(gestureRecognize)
         if touched.count > 0
         {
-            
             for i in (self.board?.pieces_on_board.keys)!
             {
                 print (i.node.name! + " " + (touched.first?.node.name)!)
@@ -192,6 +211,7 @@ class BishopsGame: BoardGameViewController
                     if(self.bishop_selected != nil)
                     {
                         self.bishop_selected?.node.removeAllActions()
+                        self.bishop_selected?.node.position.y = Piece.default_y_position
                     }
                     let vibrate_action_slow = SCNAction.repeat(SCNAction.sequence([SCNAction.moveBy(x: 0, y: movement, z: 0, duration: 0.5),SCNAction.moveBy(x: 0, y: -movement, z: 0, duration: 0.5)]), count: 3)
                     self.bishop_selected = i
@@ -199,25 +219,17 @@ class BishopsGame: BoardGameViewController
                     print("Slected: " + i.node.name!)
                     self.highLightSquares(squares: self.possiblesFor[i]!, color: UIColor.blue, duration: 1.0)
                     print( self.possiblesFor[i]!.description )
-                    //self.finalizeTurn()
                     return
                 }
-                
             }
-            
             let position = self.board?.getSquarePosition(node: (touched.first?.node)!)
             print(String(describing: position))
             if(position == nil)
             {
-                //self.finalizeTurn()
                 return
             }
-
-            
-            if (self.bishop_selected != nil)//self.squareArrayContains(array: self.imposibleSquaresArray, element: position!))
+            if (self.bishop_selected != nil)
             {
-                
-                
                 if (self.squareArrayContains(array: self.possiblesFor[self.bishop_selected!]!, element: position!))
                 {
                     self.movePiece(piece: self.bishop_selected!, position: position!)
@@ -226,35 +238,17 @@ class BishopsGame: BoardGameViewController
                     return
                     
                 }
-                
-                
-                
                 for i in (self.board?.pieces_on_board.keys)!
                 {
                     if (self.squareArrayContains(array: self.impossibleSquares[i]!, element: position!) && i.team != self.bishop_selected?.team) ///
                     {
                         let vibrate_action_fast = SCNAction.repeat(SCNAction.sequence([SCNAction.moveBy(x: 0, y: movement, z: 0, duration: 0.1),SCNAction.moveBy(x: 0, y: -movement, z: 0, duration: 0.1)]), count: 3)
-                        //
                         i.node.runAction(vibrate_action_fast)
-                        //self.bishop_selected = nil
                     }
                     
                 }
-
-                //self.highLightSquares(squares: self.imposibleSquaresArray, color: UIColor.blue, duration: 1.0)
-                
-                //self.finalizeTurn()
                 return
             }
-            return 
-            let queen = Queen.init(piece: pieces[piece_name]!)
-            queen.node.rotation.x = -114
-            //queen.node.rotation.y = 22.3
-            //queen.node.runAction(SCNAction.rotateTo(x: -1.5, y: 0, z: 0, duration: 0))
-            queen.setName(name: piece_name + String(self.turns))
-            self.placePiece(piece: queen, position: position!)
-            print(String( describing: self.scene.rootNode.camera?.technique?.dictionaryRepresentation))
-            self.finalizeTurn()
         }
     }
     
