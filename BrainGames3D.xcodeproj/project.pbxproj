@@ -20,6 +20,7 @@
 		481BDB951E26EFD50023B9AF /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */; };
 		485774F51E2D60B2003A6D79 /* BishopsGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485774F41E2D60B2003A6D79 /* BishopsGameController.swift */; };
 		485774F71E2D6CFC003A6D79 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485774F61E2D6CFC003A6D79 /* Bishop.swift */; };
+		487117881E2EDEE6006EEA31 /* Knights36Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487117871E2EDEE6006EEA31 /* Knights36Game.swift */; };
 		4876C11B1E2E756A007425AB /* bishop.png in Resources */ = {isa = PBXBuildFile; fileRef = 4876C1191E2E756A007425AB /* bishop.png */; };
 		4876C11C1E2E756A007425AB /* knight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4876C11A1E2E756A007425AB /* knight.png */; };
 		4876C11F1E2E75C2007425AB /* KnightsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876C11E1E2E75C2007425AB /* KnightsGame.swift */; };
@@ -68,6 +69,7 @@
 		481BDB8A1E26EFD50023B9AF /* SceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneViewController.swift; path = "../../BrainGame copia/BrainGame/SceneViewController.swift"; sourceTree = "<group>"; };
 		485774F41E2D60B2003A6D79 /* BishopsGameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BishopsGameController.swift; sourceTree = "<group>"; };
 		485774F61E2D6CFC003A6D79 /* Bishop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
+		487117871E2EDEE6006EEA31 /* Knights36Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knights36Game.swift; sourceTree = "<group>"; };
 		4876C1191E2E756A007425AB /* bishop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bishop.png; sourceTree = SOURCE_ROOT; };
 		4876C11A1E2E756A007425AB /* knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knight.png; sourceTree = SOURCE_ROOT; };
 		4876C11E1E2E75C2007425AB /* KnightsGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnightsGame.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				4876C11E1E2E75C2007425AB /* KnightsGame.swift */,
+				487117871E2EDEE6006EEA31 /* Knights36Game.swift */,
 			);
 			name = Knights;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				481BDB951E26EFD50023B9AF /* SceneViewController.swift in Sources */,
 				48F0B2601E27D2BA00F59405 /* Piece.swift in Sources */,
 				481BDB901E26EFD50023B9AF /* GameViewController.swift in Sources */,
+				487117881E2EDEE6006EEA31 /* Knights36Game.swift in Sources */,
 				485774F71E2D6CFC003A6D79 /* Bishop.swift in Sources */,
 				481BDB8F1E26EFD50023B9AF /* GameScene.swift in Sources */,
 				48F0B2631E2800A500F59405 /* Queen.swift in Sources */,

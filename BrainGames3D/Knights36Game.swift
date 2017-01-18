@@ -1,32 +1,33 @@
 //
-//  KnightsGame.swift
+//  Knights36Game.swift
 //  BrainGames3D
 //
-//  Created by eicke on 17/1/17.
+//  Created by eicke on 18/1/17.
 //  Copyright © 2017 eicke. All rights reserved.
 //
-
 
 import Foundation
 import SceneKit
 
-class KnightsGame: BoardGameViewController
+class Knights36Game: BoardGameViewController
 {
     
     var impossibleSquares:[Piece:[(x:Int, y:Int)]] = [:]
     var imposibleSquaresArray:[(x:Int, y:Int)] = []
     let piece_name = "Knight"
-    let team_names = ["white", "red"]
+    let team_names = ["white"]
     var initial_positions:[String:[(x:Int, y:Int)]] = [:]
     
     let team_colors = [UIColor.init(red: 250/255, green: 203/255, blue: 122/255, alpha: 1), UIColor.init(red: 81/255, green: 32/255, blue: 65/255, alpha: 1)]
     var lightNode:SCNNode = SCNNode()
-    var numBishops = 0
-    var board_x = 0
-    var board_y = 0
-    var bishop_selected:Piece? = nil
+    var numKnights = 0
+    var board_size = 0
+
+    var knight_selected:Knight? = nil
     var possiblesFor:[Piece:[(x:Int, y:Int)]] = [:]
-    
+    let initial_position:(x:Int, y:Int) = (x:0, y:0)
+    var visited_squares:[(x:Int, y:Int)] = []
+    let marks_color = UIColor.red
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -36,9 +37,8 @@ class KnightsGame: BoardGameViewController
     
     override func setupGame() {
         
-        self.numBishops = 2
-        self.board_x = 4
-        self.board_y = 4
+        self.numKnights = 1
+        self.board_size = 6
         super.setupGame()
         
     }
@@ -47,13 +47,8 @@ class KnightsGame: BoardGameViewController
     {
         self.scene.background.contents = UIColor.black
         
-        var map = Array.init(repeating: Array.init(repeating: 1, count: self.board_x), count: self.board_y)
-        map[0][3] = 0
-        map[0][1] = map[0][3]
-        map[0][2] = map[0][3]
-        map[2][3] = map[0][3]
-        map[3][2] = map[0][3]
-        map[3][3] = map[0][3]
+        let map = Array.init(repeating: Array.init(repeating: 1, count: self.board_size), count: self.board_size)
+
         
         // let whites = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [piece_name], color:UIColor.red)
         self.pieces = self.generateTeamsPieces(modelsfilename: "Piecescollada-3.dae", teams: self.team_names, piecenames: [self.piece_name], color: self.team_colors)
@@ -107,95 +102,54 @@ class KnightsGame: BoardGameViewController
         self.board?.addChildNode(lightNode)
         self.board?.position.y = (self.pieces.values.first?.node.boundingBox.min.y)! - (board?.boundingBox.max.y)!
         
-        //////////////////
-        //var piece = Knight(piece: self.pieces[piece_name])
-        //piece.setna
+
+        self.knight_selected = Knight(piece:Piece())
+        knight_selected?.setName(name: self.piece_name)
+        self.board?.pieces_on_board[self.knight_selected!] = self.initial_position
+        self.board?.placePiece(piece: self.knight_selected!, position: self.initial_position)
+     Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
         
-        let positions = [[(x:1, y:3),(x:2, y:1)],[(x:0, y:0),(x:2, y:0)]]
         
-        
-        for n in 0...self.team_names.count - 1 {
-            self.initial_positions[self.team_names[n]] = []
-            for i in 0...self.numBishops - 1 {
-                let knight = Knight(piece: self.pieces[team_names[n] + "-" + self.piece_name]! )
-                knight.setName(name: knight.node.name! + String(i))
-                knight.team = n
-                let position = positions[n][i]
-                knight.node.eulerAngles.y = Float(0.5 * 3.14 * [-1.0, 1.0][n])
-                self.placePiece(piece: knight, position: position)
-                self.initial_positions[team_names[n]]?.append(position)
-                self.initial_positions[self.team_names[n]]?.append(position)
-                self.board?.setSingleCharacterOnSquare(position: position, text: "x", text_color: self.team_colors.reversed()[n])
-            }
-        }
-        Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
         
 
-        
-        //////////////////
     }
     
     override func victoryConditionCheck() -> Bool {
-        var name = self.team_names.first
-        let lambda = {
-            (a:Piece) -> Bool in
-            return self.team_names[a.team] == name
-        }
-        let team1 = self.board?.pieces_on_board.keys.filter(lambda).reversed()
-        name = self.team_names[1]
-        let team2 = self.board?.pieces_on_board.keys.filter(lambda).reversed()
-        
-        //////team1
-        let cond2 = team1?.filter({ (a:Piece) -> Bool in
-            return  self.squareArrayContains(array: self.initial_positions[self.team_names[1]]!, element: (self.board?.pieces_on_board[a])!) == false
-        }).isEmpty
-        ///////team2
-        let cond1 = team2?.filter({ (a:Piece) -> Bool in
-            return  self.squareArrayContains(array: self.initial_positions[self.team_names[0]]!, element: (self.board?.pieces_on_board[a])!) == false
-        }).isEmpty
-        
-        return cond1! && cond2!
+        return self.visited_squares.count == self.board_size * self.board_size
     }
     
     override func turnsEnd(player: Int) {
-        self.impossibleSquares.removeAll()
-        for i in (self.board?.pieces_on_board.keys)!
+
+        let position = self.board?.pieces_on_board[self.knight_selected!]
+        if (self.squareArrayContains(array: self.visited_squares, element: position!) == false)
         {
-            self.impossibleSquares[i] = i.possiblesMovements(board: self.board!, position: (self.board?.pieces_on_board[i])!)
+            self.visited_squares.append(position!)
+            self.board?.setNumberOnSquare(position: position!, text: String(self.visited_squares.count), text_color: self.marks_color)
+        }
+        else
+        {
+            self.visited_squares.removeLast()
+            self.board?.removeMarkFromSquare(position: position!)
         }
         super.turnsEnd(player: player)
     }
     
     func getPossiblesFor(piece:Piece) -> [(x:Int, y:Int)]
     {
-        let rivals = self.board?.pieces_on_board.keys.filter({ (a:Piece) -> Bool in
-            return a.team != piece.team
-        })
-        
-        var final_possible:[(x:Int, y:Int)] = []
-        /*var rivals_possibles:[(x:Int, y:Int)] = []
-        for i in rivals!
-        {
-            for n in self.impossibleSquares[i]!
-            {
-                rivals_possibles.append(n)
-            }
-            
+        let lambda = {
+            (a:(x:Int, y:Int)) -> Bool in
+            let last_visited = (a.x == (self.visited_squares.last?.x)! && a.y == (self.visited_squares.last?.y)!)
+            let no_visited = self.squareArrayContains(array: self.impossibleSquares[self.knight_selected!]!, element: a) == false
+            return (  no_visited ||  last_visited)
         }
-         */
-        
-        final_possible = impossibleSquares[piece]!.filter({ (a:(x: Int, y: Int)) -> Bool in
-            return (/*self.squareArrayContains(array: rivals_possibles, element:a) == false && */self.squareArrayContains(array: (self.board?.pieces_on_board.values.reversed())!, element: a) == false)
-        })
-        print(piece.node.name! + final_possible.description)
-        return final_possible
+        let possibles_turn = self.impossibleSquares[knight_selected!]?.filter(lambda)
+        return possibles_turn!
     }
     
     override func beforeTurnStarts(player: Int) -> Bool {
-        for i in (self.board?.pieces_on_board.keys)!
-        {
-            self.possiblesFor[i] = self.getPossiblesFor(piece: i)
-        }
+        
+        self.impossibleSquares.removeAll()
+        self.impossibleSquares[self.knight_selected!] = self.knight_selected?.possiblesMovements(board: self.board!, position: (self.board?.pieces_on_board[self.knight_selected!])!)
         super.beforeTurnStarts(player: player)
         return true
     }
@@ -230,7 +184,7 @@ class KnightsGame: BoardGameViewController
     }
     
     override func handleTouchOnTurn(_ gestureRecognize: UIGestureRecognizer)
-    {
+    {/*
         let movement = CGFloat(self.board!.size) * CGFloat(0.1)
         let touched = self.getTouchedElements(gestureRecognize)
         if touched.count > 0
@@ -281,7 +235,7 @@ class KnightsGame: BoardGameViewController
                 }
                 return
             }
-        }
+        }*/
     }
     
     

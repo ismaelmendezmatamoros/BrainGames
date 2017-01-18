@@ -102,7 +102,7 @@ class BishopsGame: BoardGameViewController
                 self.placePiece(piece: bishop, position: position)
                 self.initial_positions[team_names[n]]?.append(position)
                 self.initial_positions[self.team_names[n]]?.append(position)
-                self.board?.setLabelonSquare(position: position, text: "x", text_color: self.team_colors.reversed()[n])
+                self.board?.setSingleCharacterOnSquare(position: position, text: "x", text_color: self.team_colors.reversed()[n])
             }
         }
         Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
