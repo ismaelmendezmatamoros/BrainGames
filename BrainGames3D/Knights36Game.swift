@@ -14,11 +14,11 @@ class Knights36Game: BoardGameViewController
     
     var impossibleSquares:[Piece:[(x:Int, y:Int)]] = [:]
     var imposibleSquaresArray:[(x:Int, y:Int)] = []
-    let piece_name = "Knight"
+    var piece_name = "Knight"
     let team_names = ["white"]
     var initial_positions:[String:[(x:Int, y:Int)]] = [:]
     
-    let team_colors = [UIColor.init(red: 250/255, green: 203/255, blue: 122/255, alpha: 1), UIColor.init(red: 81/255, green: 32/255, blue: 65/255, alpha: 1)]
+    //let team_colors = [UIColor.init(red: 250/255, green: 203/255, blue: 122/255, alpha: 1), UIColor.init(red: 81/255, green: 32/255, blue: 65/255, alpha: 1)]
     var lightNode:SCNNode = SCNNode()
     var numKnights = 0
     var board_size = 0
@@ -40,6 +40,7 @@ class Knights36Game: BoardGameViewController
         self.numKnights = 1
         self.board_size = 6
         super.setupGame()
+        //self.piece_names = [self.piece_name]
         
     }
     
@@ -51,7 +52,7 @@ class Knights36Game: BoardGameViewController
 
         
         // let whites = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [piece_name], color:UIColor.red)
-        self.pieces = self.generateTeamsPieces(modelsfilename: "Piecescollada-3.dae", teams: self.team_names, piecenames: [self.piece_name], color: self.team_colors)
+        self.pieces = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [self.piece_name], color:UIColor.black)
         
         let size = (self.pieces.values.first?.node.boundingBox.max.x)! - (self.pieces.values.first?.node.boundingBox.min.x)!
         self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.brown /*self.team_colors[0]*/, color2: /*self.team_colors[1]*/ UIColor.darkGray, piece_height: (self.pieces.values.first?.node.boundingBox.max.y)!)
@@ -103,10 +104,10 @@ class Knights36Game: BoardGameViewController
         self.board?.position.y = (self.pieces.values.first?.node.boundingBox.min.y)! - (board?.boundingBox.max.y)!
         
 
-        self.knight_selected = Knight(piece:Piece())
+        self.knight_selected = Knight(piece: self.pieces[piece_name]!)
         knight_selected?.setName(name: self.piece_name)
-        self.board?.pieces_on_board[self.knight_selected!] = self.initial_position
-        self.board?.placePiece(piece: self.knight_selected!, position: self.initial_position)
+        //self.board?.pieces_on_board[self.knight_selected!] = self.initial_position
+        self.placePiece(piece: self.knight_selected!, position: self.initial_position)
      Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
         
         
