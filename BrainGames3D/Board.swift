@@ -15,12 +15,14 @@ class Board: SCNNode
 {
     struct Square  {
         var node:SCNNode? = nil
+        var mark_node:SCNNode? = nil
         var type:Int = 0                                 //Puede que en futuro haya q distinguir entre tipos de casillas
     }
     var pieces_node = SCNNode()
     var board:[[Square?]] = []
     var pieces_on_board:[Piece:(x:Int, y:Int)] = [:]
     var board_node = SCNNode()
+    
     var size:Float = 0
     
     init(map:[[Int]], squaresize:Float, squareheight:Float, color1:UIColor, color2:UIColor, piece_height:Float)
@@ -61,7 +63,7 @@ class Board: SCNNode
         //self.pieces_node.position.y += squareheight
    
         self.board_node.addChildNode(pieces_node)
-        self.position = (self.board[map.count/2][map.count/2]?.node?.position)!
+        //self.position = (self.board[map.count/2][map.count/2]?.node?.position)!
         self.addChildNode(self.board_node)
         //self.addChildNode(self.pieces_node)
     }
@@ -97,10 +99,11 @@ class Board: SCNNode
     
     
     
-    func setNumberOnSquare(position:(x:Int, y:Int), text:String, text_color:UIColor)
+    func setNumberOnSquare(position:(x:Int, y:Int), num:Int, text_color:UIColor)
     {
         let movement = size * 0.05
-        let tex = SCNText.init(string: text, extrusionDepth: 2.0)
+        let num_string = (num < 10 ? "0" : "") + String(num)
+        let tex = SCNText.init(string: num_string, extrusionDepth: 2.0)
         tex.firstMaterial?.diffuse.contents = text_color
         let text_node = SCNNode(geometry: tex)
         let action = [SCNAction.moveBy(x: 0, y: CGFloat(movement), z: 0, duration: 0.5),SCNAction.moveBy(x: 0, y: -(CGFloat)(movement), z: 0, duration: 0.5)]
@@ -120,18 +123,14 @@ class Board: SCNNode
         
         let scale =  0.5 * ((self.board[position.x][position.y]?.node?.boundingBox.max.x)! - (self.board[position.x][position.y]?.node?.boundingBox.min.x)!) /  (text_node.boundingBox.max.x - text_node.boundingBox.min.x)
         text_node.scale = SCNVector3.init(x: scale, y: scale, z: scale)
-        self.board[position.x][position.y]?.node?.addChildNode(text_node) //addClid(tex)
-        //self.board[position.x][position.y]?.node?.geometry?.firstMaterial?.diffuse.contents = scene
+        self.board[position.x][position.y]?.node?.addChildNode(text_node)
+        self.board[position.x][position.y]?.mark_node = text_node
     }
     
     
     func removeMarkFromSquare(position:(x:Int, y:Int))
     {
-        
-            self.board[position.x][position.y]?.node?.childNodes.forEach {
-                (a:SCNNode) in
-            a.removeFromParentNode()
-        }
+        self.board[position.x][position.y]?.mark_node?.removeFromParentNode()
     }
     
     
@@ -159,8 +158,9 @@ class Board: SCNNode
         
         let scale =  0.5 * ((self.board[position.x][position.y]?.node?.boundingBox.max.x)! - (self.board[position.x][position.y]?.node?.boundingBox.min.x)!) /  (text_node.boundingBox.max.x - text_node.boundingBox.min.x)
         text_node.scale = SCNVector3.init(x: scale, y: scale, z: scale)
-        self.board[position.x][position.y]?.node?.addChildNode(text_node) //addClid(tex)
-        //self.board[position.x][position.y]?.node?.geometry?.firstMaterial?.diffuse.contents = scene
+        self.board[position.x][position.y]?.node?.addChildNode(text_node)
+        self.board[position.x][position.y]?.mark_node = text_node
+
     }
     
     func placePiece(piece:Piece, position:(x:Int, y:Int))

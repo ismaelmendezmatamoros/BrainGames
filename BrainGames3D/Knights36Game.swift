@@ -41,6 +41,7 @@ class Knights36Game: BoardGameViewController
         self.board_size = 6
         super.setupGame()
         //self.piece_names = [self.piece_name]
+        super.setupGame()
         
     }
     
@@ -52,7 +53,7 @@ class Knights36Game: BoardGameViewController
 
         
         // let whites = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [piece_name], color:UIColor.red)
-        self.pieces = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [self.piece_name], color:UIColor.black)
+        self.pieces = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [self.piece_name], color: UIColor.init(red: 81/255, green: 32/255, blue: 65/255, alpha: 1))
         
         let size = (self.pieces.values.first?.node.boundingBox.max.x)! - (self.pieces.values.first?.node.boundingBox.min.x)!
         self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.brown /*self.team_colors[0]*/, color2: /*self.team_colors[1]*/ UIColor.darkGray, piece_height: (self.pieces.values.first?.node.boundingBox.max.y)!)
@@ -108,15 +109,16 @@ class Knights36Game: BoardGameViewController
         knight_selected?.setName(name: self.piece_name)
         //self.board?.pieces_on_board[self.knight_selected!] = self.initial_position
         self.placePiece(piece: self.knight_selected!, position: self.initial_position)
+        self.knight_selected?.node.eulerAngles.y = Float(0.5 * 3.14  )
      Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
         
-        
+        super.setupScene()
         
 
     }
     
     override func victoryConditionCheck() -> Bool {
-        return self.visited_squares.count == self.board_size * self.board_size
+        return self.visited_squares.count == (self.board_size * self.board_size) - 1
     }
     
     override func turnsEnd(player: Int) {
@@ -124,8 +126,7 @@ class Knights36Game: BoardGameViewController
         let position = self.board?.pieces_on_board[self.knight_selected!]
         if (self.squareArrayContains(array: self.visited_squares, element: position!) == false)
         {
-            self.visited_squares.append(position!)
-            self.board?.setNumberOnSquare(position: position!, text: String(self.visited_squares.count), text_color: self.marks_color)
+            //self.visited_squares.append(position!)
         }
         else
         {
@@ -140,17 +141,26 @@ class Knights36Game: BoardGameViewController
         let lambda = {
             (a:(x:Int, y:Int)) -> Bool in
             let last_visited = (a.x == (self.visited_squares.last?.x)! && a.y == (self.visited_squares.last?.y)!)
-            let no_visited = self.squareArrayContains(array: self.impossibleSquares[self.knight_selected!]!, element: a) == false
+            let no_visited = self.squareArrayContains(array: self.visited_squares , element: a) == false
             return (  no_visited ||  last_visited)
         }
-        let possibles_turn = self.impossibleSquares[knight_selected!]?.filter(lambda)
-        return possibles_turn!
+        if (self.visited_squares.isEmpty)
+        {
+            return self.impossibleSquares[knight_selected!]!
+        }
+        else
+        {
+            return (self.impossibleSquares[knight_selected!]?.filter(lambda))!
+        }
+
     }
     
     override func beforeTurnStarts(player: Int) -> Bool {
         
         self.impossibleSquares.removeAll()
         self.impossibleSquares[self.knight_selected!] = self.knight_selected?.possiblesMovements(board: self.board!, position: (self.board?.pieces_on_board[self.knight_selected!])!)
+        self.possiblesFor[self.knight_selected!] = self.getPossiblesFor(piece: self.knight_selected!)
+        self.highLightSquares(squares: self.possiblesFor[self.knight_selected!]!, color: UIColor.blue, duration: 3.0)
         super.beforeTurnStarts(player: player)
         return true
     }
@@ -177,7 +187,7 @@ class Knights36Game: BoardGameViewController
         self.board?.pieces_on_board[piece] = position
         piece.node.runAction((SCNAction.move(to: square_position!, duration: 1.0)), completionHandler: {
             
-            semaphore_signal(control)
+          semaphore_signal(control)
             
         })
         semaphore_wait(control)
@@ -185,7 +195,7 @@ class Knights36Game: BoardGameViewController
     }
     
     override func handleTouchOnTurn(_ gestureRecognize: UIGestureRecognizer)
-    {/*
+    {
         let movement = CGFloat(self.board!.size) * CGFloat(0.1)
         let touched = self.getTouchedElements(gestureRecognize)
         if touched.count > 0
@@ -195,15 +205,6 @@ class Knights36Game: BoardGameViewController
                 print (i.node.name! + " " + (touched.first?.node.name)!)
                 if (i.node.name == touched.first?.node.name || (i.node.childNode(withName:(touched.first?.node.name)!, recursively: true)) != nil) ///
                 {
-                    if(self.bishop_selected != nil)
-                    {
-                        self.bishop_selected?.node.removeAllActions()
-                        self.bishop_selected?.node.position.y = Piece.default_y_position
-                    }
-                    let vibrate_action_slow = SCNAction.repeat(SCNAction.sequence([SCNAction.moveBy(x: 0, y: movement, z: 0, duration: 0.5),SCNAction.moveBy(x: 0, y: -movement, z: 0, duration: 0.5)]), count: 3)
-                    self.bishop_selected = i
-                    self.bishop_selected?.node.runAction(SCNAction.repeatForever(vibrate_action_slow))
-                    print("Slected: " + i.node.name!)
                     self.highLightSquares(squares: self.possiblesFor[i]!, color: UIColor.red, duration: 1.0)
                     print( self.possiblesFor[i]!.description )
                     return
@@ -215,28 +216,31 @@ class Knights36Game: BoardGameViewController
             {
                 return
             }
-            if (self.bishop_selected != nil)
-            {
-                if (self.squareArrayContains(array: self.possiblesFor[self.bishop_selected!]!, element: position!))
+                if (self.squareArrayContains(array: self.possiblesFor[self.knight_selected!]!, element: position!))
                 {
-                    self.movePiece(piece: self.bishop_selected!, position: position!)
-                    self.bishop_selected = nil
+                    let old_position = self.board?.pieces_on_board[self.knight_selected!]
+                    let last_visited = self.visited_squares.last
+                    if (self.squareArrayContains(array: self.visited_squares, element: old_position!) == false && (position!.x != last_visited?.x || position?.y != last_visited?.y) )
+                    {
+                        self.visited_squares.append(old_position!)
+                        self.board?.setNumberOnSquare(position: old_position!, num: self.visited_squares.count, text_color: self.marks_color)
+                    }
+                    self.movePiece(piece: self.knight_selected!, position: position!)
                     self.finalizeTurn()
                     return
                     
                 }
-                for i in (self.board?.pieces_on_board.keys)!
+                else
                 {
-                    if (self.squareArrayContains(array: self.impossibleSquares[i]!, element: position!) && i.team != self.bishop_selected?.team) ///
-                    {
-                        let vibrate_action_fast = SCNAction.repeat(SCNAction.sequence([SCNAction.moveBy(x: 0, y: movement, z: 0, duration: 0.1),SCNAction.moveBy(x: 0, y: -movement, z: 0, duration: 0.1)]), count: 3)
-                        i.node.runAction(vibrate_action_fast)
-                    }
-                    
+                    let vibrate_action_fast = SCNAction.repeat(SCNAction.sequence([SCNAction.moveBy(x: 0, y: movement, z: 0, duration: 0.1),SCNAction.moveBy(x: 0, y: -movement, z: 0, duration: 0.1)]), count: 3)
+                    self.knight_selected?.node.runAction(vibrate_action_fast)
+                    self.highLightSquares(squares: self.possiblesFor[self.knight_selected!]!, color: UIColor.blue, duration: 1.0)
                 }
+                    
+                
                 return
-            }
-        }*/
+            
+        }
     }
     
     
