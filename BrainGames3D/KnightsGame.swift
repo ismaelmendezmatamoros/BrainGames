@@ -249,7 +249,7 @@ class KnightsGame: BoardGameViewController
                     self.bishop_selected = i
                     self.bishop_selected?.node.runAction(SCNAction.repeatForever(vibrate_action_slow))
                     print("Slected: " + i.node.name!)
-                    self.highLightSquares(squares: self.possiblesFor[i]!, color: UIColor.red, duration: 1.0)
+                    self.highLightSquares(squares: self.possiblesFor[i]!, color: UIColor.blue, duration: 1.0)
                     print( self.possiblesFor[i]!.description )
                     return
                 }
