@@ -89,7 +89,7 @@ class BishopsGame: BoardGameViewController
         self.scene.rootNode.addChildNode(board!)
         self.board?.addChildNode(lightNode)
         self.board?.position.y = (self.pieces.values.first?.node.boundingBox.min.y)! - (board?.boundingBox.max.y)!
-        
+        sleep(2)
         //////////////////
         for n in 0...self.team_names.count - 1 {
             self.initial_positions[self.team_names[n]] = []
@@ -99,10 +99,13 @@ class BishopsGame: BoardGameViewController
                 bishop.team = n
                 bishop.node.eulerAngles.y = Float(0.5 * 3.14 * [1.0, -1.0][n])
                 let position = (x: i , y: n * (self.board_x - 1))
+                bishop.node.runAction(SCNAction.fadeOut(duration: 0))
                 self.placePiece(piece: bishop, position: position)
                 self.initial_positions[team_names[n]]?.append(position)
                 self.initial_positions[self.team_names[n]]?.append(position)
                 self.board?.setSingleCharacterOnSquare(position: position, text: "x", text_color: self.team_colors.reversed()[n])
+                bishop.node.runAction(SCNAction.fadeIn(duration: 0))
+                //self.dropPiecesAnimation(piece: bishop, duration: 1)
             }
         }
         Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!

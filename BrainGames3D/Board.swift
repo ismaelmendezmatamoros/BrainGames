@@ -94,7 +94,14 @@ class Board: SCNNode
     
     }*/
     
-    
+    func dropPiecesAnimation(piece:Piece, duration:TimeInterval)
+    {
+        /*let position0 = piece.node.position
+        piece.node.position.y = 2000.0
+        
+        piece.node.runAction(SCNAction.move(to: position0, duration: duration))
+        piece.node.position = position0*/
+    }
     
     
     

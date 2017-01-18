@@ -113,7 +113,7 @@ class KnightsGame: BoardGameViewController
         
         let positions = [[(x:1, y:3),(x:2, y:1)],[(x:0, y:0),(x:2, y:0)]]
         
-        
+        //sleep(2)
         for n in 0...self.team_names.count - 1 {
             self.initial_positions[self.team_names[n]] = []
             for i in 0...self.numBishops - 1 {
@@ -122,10 +122,13 @@ class KnightsGame: BoardGameViewController
                 knight.team = n
                 let position = positions[n][i]
                 knight.node.eulerAngles.y = Float(0.5 * 3.14 * [-1.0, 1.0][n])
+                //knight.node.runAction(SCNAction.fadeOut(duration: 0))
                 self.placePiece(piece: knight, position: position)
                 self.initial_positions[team_names[n]]?.append(position)
                 self.initial_positions[self.team_names[n]]?.append(position)
                 self.board?.setSingleCharacterOnSquare(position: position, text: "x", text_color: self.team_colors.reversed()[n])
+                //self.dropPiecesAnimation(piece: knight, duration: 1)
+                //knight.node.runAction(SCNAction.fadeIn(duration: 0))
             }
         }
         Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!

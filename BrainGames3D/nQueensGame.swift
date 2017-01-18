@@ -34,7 +34,7 @@ class nQueensGame: BoardGameViewController
         let map = Array.init(repeating: Array.init(repeating: 1, count: self.numQueens), count: self.numQueens)
         self.pieces = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [piece_name], color:UIColor.red)
         let size = (self.pieces[piece_name]?.node.boundingBox.max.x)! - (self.pieces[piece_name]?.node.boundingBox.min.x)!
-        self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.darkGray, color2: UIColor.black, piece_height: (pieces[piece_name]?.node.boundingBox.max.y)!)
+        self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.gray, color2: UIColor.black, piece_height: (pieces[piece_name]?.node.boundingBox.max.y)!)
         //////////
         self.pieces[piece_name] = Queen(piece: pieces[piece_name]!)
         //let lightNode = SCNNode()
@@ -89,8 +89,14 @@ class nQueensGame: BoardGameViewController
     func placePiece(piece:Piece, position:(x:Int, y:Int))
     {
         //piece.node.name = piece_name + String(self.turns)
+        
         self.board?.placePiece(piece: piece, position: position)
-        piece.node.runAction(SCNAction.fadeIn(duration: 1))
+        //piece.node.isHidden = true
+        /*let position0 = piece.node.position
+        piece.node.position.y = 2000.0
+        //piece.node.position = position0
+        piece.node.runAction(SCNAction.move(to: position0, duration: 1))    */
+        //self.dropPiecesAnimation(piece: piece, duration: 1) //piece.node.runAction(SCNAction.fadeIn(duration: 2.0))
         let possibles = piece.possiblesMovements(board: board!, position: position)
         self.impossibleSquares[piece] = possibles
     }

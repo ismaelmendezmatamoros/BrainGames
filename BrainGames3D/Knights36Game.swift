@@ -110,7 +110,9 @@ class Knights36Game: BoardGameViewController
         //self.board?.pieces_on_board[self.knight_selected!] = self.initial_position
         self.placePiece(piece: self.knight_selected!, position: self.initial_position)
         self.knight_selected?.node.eulerAngles.y = Float(0.5 * 3.14  )
-     Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
+        //sleep(5)
+        Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
+        //self.dropPiecesAnimation(piece: self.knight_selected!, duration: 1)
         
         super.setupScene()
         
