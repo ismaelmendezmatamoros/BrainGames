@@ -96,11 +96,17 @@ class Board: SCNNode
     
     func dropPiecesAnimation(piece:Piece, duration:TimeInterval)
     {
-        /*let position0 = piece.node.position
+        piece.node.runAction(SCNAction.fadeIn(duration: 2))
+        /*
+         let position0 =  piece.node.position
+        
+        let lambda = { () in
+            piece.node.position = position0
+        }
         piece.node.position.y = 2000.0
         
-        piece.node.runAction(SCNAction.move(to: position0, duration: duration))
-        piece.node.position = position0*/
+        piece.node.runAction(SCNAction.move(to: position0, duration: duration), completionHandler: lambda)
+        print(String(piece.node.position.y) + " xxxxx " + String(position.y))*/
     }
     
     
@@ -177,6 +183,7 @@ class Board: SCNNode
         np.node.position.y += abs(np.node.boundingBox.min.z)
         np.node.position.x = (self.board[position.x][position.y]?.node?.position.x)!
         np.node.position.z = (self.board[position.x][position.y]?.node?.position.z)!
+        self.dropPiecesAnimation(piece: np, duration: 2)
         self.pieces_node.addChildNode(np.node)
     }
     
