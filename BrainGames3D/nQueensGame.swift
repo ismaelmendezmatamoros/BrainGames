@@ -35,6 +35,7 @@ class nQueensGame: BoardGameViewController
         self.pieces = self.loadModelsFromFile(filename: "Piecescollada-3.dae", names: [piece_name], color:UIColor.red)
         let size = (self.pieces[piece_name]?.node.boundingBox.max.x)! - (self.pieces[piece_name]?.node.boundingBox.min.x)!
         self.board = Board.init(map: map, squaresize: Float(size), squareheight: size * 0.2 , color1: UIColor.gray, color2: UIColor.black, piece_height: (pieces[piece_name]?.node.boundingBox.max.y)!)
+        
         //////////
         self.pieces[piece_name] = Queen(piece: pieces[piece_name]!)
         //let lightNode = SCNNode()
@@ -109,6 +110,7 @@ class nQueensGame: BoardGameViewController
         {
         self.impossibleSquares[i] = i.possiblesMovements(board: self.board!, position: (self.board?.pieces_on_board[i])!)
         }
+        self.moves.text = "moves: \(self.turns)"
         super.turnsEnd(player: player)
     }
     

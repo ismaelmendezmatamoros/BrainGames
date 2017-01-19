@@ -141,6 +141,7 @@ class BishopsGame: BoardGameViewController
         {
             self.impossibleSquares[i] = i.possiblesMovements(board: self.board!, position: (self.board?.pieces_on_board[i])!)
         }
+        self.moves.text = "moves: \(self.turns)"
         super.turnsEnd(player: player)
     }
     

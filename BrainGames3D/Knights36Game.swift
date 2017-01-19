@@ -35,7 +35,7 @@ class Knights36Game: BoardGameViewController
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.showExitButton()
+        
         //self.setupGame()
         //self.setupScene()
     }
@@ -46,8 +46,7 @@ class Knights36Game: BoardGameViewController
         
         self.numKnights = 1
         self.board_size = 6
-        super.setupGame()
-        //self.piece_names = [self.piece_name]
+       //self.piece_names = [self.piece_name]
         super.setupGame()
         
     }
@@ -120,6 +119,7 @@ class Knights36Game: BoardGameViewController
         //sleep(5)
         Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
         //self.dropPiecesAnimation(piece: self.knight_selected!, duration: 1)
+        self.showExitButton()
         
         super.setupScene()
         
@@ -142,6 +142,7 @@ class Knights36Game: BoardGameViewController
             self.visited_squares.removeLast()
             self.board?.removeMarkFromSquare(position: position!)
         }
+        self.moves.text = "moves: \(self.turns)"
         super.turnsEnd(player: player)
     }
     

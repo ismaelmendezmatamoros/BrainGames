@@ -64,6 +64,7 @@ class Board: SCNNode
    
         self.board_node.addChildNode(pieces_node)
         //self.position = (self.board[map.count/2][map.count/2]?.node?.position)!
+
         self.addChildNode(self.board_node)
         //self.addChildNode(self.pieces_node)
     }
@@ -94,19 +95,22 @@ class Board: SCNNode
     
     }*/
     
-    func dropPiecesAnimation(piece:Piece, duration:TimeInterval)
+    func dropPiecesAnimation(piece:Piece, duration:Int)
     {
-        piece.node.runAction(SCNAction.fadeIn(duration: 2))
-        /*
+        var float = CGFloat(duration)
+        float.multiply(by: CGFloat(0.001))
+
+        piece.node.runAction(SCNAction.fadeIn(duration: TimeInterval(float)))
          let position0 =  piece.node.position
         
         let lambda = { () in
             piece.node.position = position0
         }
         piece.node.position.y = 2000.0
+        piece.node.runAction(SCNAction.move(to: position0, duration: TimeInterval(float)), completionHandler: lambda)
+        //print(String(piece.node.position.y) + " xxxxx " + String(position.y))
         
-        piece.node.runAction(SCNAction.move(to: position0, duration: duration), completionHandler: lambda)
-        print(String(piece.node.position.y) + " xxxxx " + String(position.y))*/
+        usleep (useconds_t(Int(Float(duration) * 1000 + 600))) //piece.node.position = position0
     }
     
     
@@ -183,7 +187,7 @@ class Board: SCNNode
         np.node.position.y += abs(np.node.boundingBox.min.z)
         np.node.position.x = (self.board[position.x][position.y]?.node?.position.x)!
         np.node.position.z = (self.board[position.x][position.y]?.node?.position.z)!
-        self.dropPiecesAnimation(piece: np, duration: 2)
+        self.dropPiecesAnimation(piece: np, duration: 800)
         self.pieces_node.addChildNode(np.node)
     }
     
