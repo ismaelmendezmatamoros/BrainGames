@@ -29,6 +29,7 @@ class KnightsGame: BoardGameViewController
     
     override func viewDidLoad() {
         
+        
         super.viewDidLoad()
         //self.setupGame()
         //self.setupScene()
@@ -132,7 +133,7 @@ class KnightsGame: BoardGameViewController
             }
         }
         Piece.default_y_position = (self.board?.pieces_on_board.keys.first?.node.position.y)!
-        
+        self.showExitButton()
 
         
         //////////////////

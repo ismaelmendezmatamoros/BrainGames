@@ -8,6 +8,7 @@
 
 import Foundation
 import SceneKit
+import SpriteKit
 
 class Knights36Game: BoardGameViewController
 {
@@ -28,12 +29,18 @@ class Knights36Game: BoardGameViewController
     let initial_position:(x:Int, y:Int) = (x:0, y:0)
     var visited_squares:[(x:Int, y:Int)] = []
     let marks_color = UIColor.red
+    
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.showExitButton()
         //self.setupGame()
         //self.setupScene()
     }
+
+    
     
     override func setupGame() {
         
